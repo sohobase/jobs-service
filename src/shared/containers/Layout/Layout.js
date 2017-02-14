@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import styles from './Layout.css';
 
 const LayoutPropTypes = {
   children: PropTypes.node,
@@ -6,7 +7,7 @@ const LayoutPropTypes = {
 
 const Layout = ({ children }) => (
   <div>
-    <h1>Home page</h1>
+    <h1 className={styles.title}>Home page</h1>
     <div>{children}</div>
   </div>
 );

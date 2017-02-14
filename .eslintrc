@@ -11,6 +11,7 @@
   },
   "rules": {
     "max-len": [1, 120, { "tabWidth": 2, "ignoreComments": true }],
+    "global-require": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-filename-extension": "off",
     "react/require-default-props": "off",

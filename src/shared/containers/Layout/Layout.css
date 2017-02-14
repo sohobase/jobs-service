@@ -1,0 +1,9 @@
+@import "../../styles/commons.css";
+
+:root {
+  --color-red: palevioletred;
+}
+
+.title {
+  background: var(--color-red);
+}
