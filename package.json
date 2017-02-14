@@ -1,6 +1,6 @@
 {
   "name": "remoto",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A new way for get your next remote job",
   "private": true,
   "repository": {
@@ -8,7 +8,9 @@
     "type": "git"
   },
   "scripts": {
-    "start": "node src/server",
+    "start": "NODE_ENV=production & npm run server",
+    "dev": "NODE_ENV=development & npm run server",
+    "server": "node src/server",
     "test": "jest -i",
     "test:watch": "jest --watch",
     "lint:css": "stylelint ./src/**/*.css",
@@ -49,6 +51,7 @@
     "css-modules-require-hook": "^4.0.5",
     "ejs": "^2.5.5",
     "express": "4.14.1",
+    "express-status-monitor": "0.1.9",
     "file-loader": "0.10.0",
     "morgan": "1.8.0",
     "react": "15.4.2",
