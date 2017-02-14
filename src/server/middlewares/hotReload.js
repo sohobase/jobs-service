@@ -1,8 +1,5 @@
-import webpack from 'webpack';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import webpackConfig from '../../../webpack.config';
-
-const compiler = webpack(webpackConfig);
+import { compiler } from './webpack';
 
 export default webpackHotMiddleware(compiler, {
   log: console.log,
