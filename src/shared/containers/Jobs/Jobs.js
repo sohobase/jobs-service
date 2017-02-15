@@ -10,7 +10,7 @@ const Jobs = ({ dataSource }) => (
 );
 
 Jobs.propTypes = {
-  dataSource: PropTypes.unknown,
+  dataSource: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Jobs;
