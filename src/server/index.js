@@ -6,4 +6,5 @@ hook({
   generateScopedName: '[name]_[local]_[hash:base64:5]',
 });
 
-require('./server');
+// require('./server');
+require('./providers/WeWorkRemotely');
