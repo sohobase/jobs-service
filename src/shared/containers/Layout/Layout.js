@@ -3,10 +3,10 @@ import { Header, Footer, Landing } from '../../components';
 import style from './Layout.css';
 
 const Layout = ({ children }) => (
-  <article>
+  <article className={style.layout}>
     <Header />
     <Landing />
-    <section>
+    <section className={style.wrapper}>
       {children}
     </section>
     <Footer />
