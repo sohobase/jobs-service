@@ -12,9 +12,7 @@
   background-color: var(--background-contrast);
 
   & .wrapper {
-    /* @TODO: this .wrapper properties have to be inherit from a common */
-    max-width: var(--content-max-width);
-    margin: 0 auto;
+    @apply --wrapper;
   }
 
   &.slogan {

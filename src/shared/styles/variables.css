@@ -34,6 +34,12 @@
   --layout-M: 960px;
   --layout-L: 1280px;
   --layout-XL: 1920px;
+
+  /* Common rules */
+  --wrapper: {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+  }
 }
 
 /* RWD */
