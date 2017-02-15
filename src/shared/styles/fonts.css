@@ -1,0 +1,25 @@
+:root {
+  /* - Font Family - */
+  --preferred-font: 'Helvetica Neue', 'Calibri Light', Roboto, sans-serif;
+  --icon-font: 'Material Icons';
+
+  /* - Font Size - */
+  --font-size-extra-large: calc(2.4 * var(--unit));
+  --font-size-large: calc(2 * var(--unit));
+  --font-size-normal: calc(1.6 * var(--unit));
+  --font-size-small: calc(1.4 * var(--unit));
+  --font-size-tiny: calc(1.2 * var(--unit));
+
+  /* - Font Height - */
+  --line-height-extra-large: calc(3.2 * var(--unit));
+  --line-height-large: calc(2.6 * var(--unit));
+  --line-height-normal: calc(2 * var(--unit));
+  --line-height-small: calc(1.8 * var(--unit));
+  --line-height-tiny: calc(1.4 * var(--unit));
+
+  /* - Font Weight - */
+  --font-weight-regular: 400;
+  --font-weight-semi-bold: 500;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 900;
+}

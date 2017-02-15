@@ -1,9 +1,12 @@
 @import "../../styles/commons.css";
+@import "../../styles/variables.css";
 
 :root {
-  --color-red: palevioletred;
+
 }
 
-.title {
-  background: var(--color-red);
+.wrapper {
+  background-color: green;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
 }

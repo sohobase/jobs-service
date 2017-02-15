@@ -1,0 +1,34 @@
+@import "../styles/fonts.css";
+@import "../styles/variables.css";
+
+.header {
+  &, & .wrapper {
+    height: var(--header-height);
+  }
+
+  & .wrapper {
+    display: flex;
+    align-items: center;
+    /* @TODO: this .wrapper properties have to be inherit from a common */
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+  }
+
+  & .brand {
+    font-size: var(--font-size-extra-large);
+    font-weight: var(--font-weight-extra-bold);
+  }
+
+  & .navigation {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+    align-content: flex-end;
+    justify-content: flex-end;
+    font-size: var(--font-size-small);
+
+    & > * {
+      margin-left: var(--offset);
+    }
+  }
+}

@@ -1,9 +1,8 @@
 import React from 'react';
+import style from './Jobs.css';
 
 const Jobs = () => (
-  <div>
-    <h1>Jobs</h1>
-  </div>
+  <ul className={style.wrapper}>Jobs</ul>
 );
 
 export default Jobs;

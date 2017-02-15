@@ -1,0 +1,43 @@
+:root {
+  --unit: 1rem;
+  --offset: calc(var(--unit) * 1.6);
+  --offset-phone: calc(var(--unit) * 1);
+
+  /* SIZES */
+  --header-height: calc(var(--unit) * 5.6);
+  --avatar-size: calc(var(--unit) * 3.2);
+  --content-max-width: calc(var(--unit) * 102.4);
+  --button-height: calc(3.6 * var(--unit));
+
+  /* SHADOWS */
+  --shadow-strong: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
+  --shadow-light: 0 1px 0 rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1);
+  --shadow-deep: 0 1px 8px rgba(0, 0, 0, 0.1);
+  --shadow-focus: 0 2px 12px rgba(0, 0, 0, 0.2), inset 0 0 0 calc(var(--unit) * 6.4) color(white alpha(10%));
+
+  /* zIndex */
+  --zIndex-highest: 300;
+  --zIndex-higher: 200;
+  --zIndex-high: 100;
+  --zIndex-normal: 1;
+  --zIndex-base: 0;
+  --zIndex-low: -100;
+  --zIndex-lower: -200;
+
+  /* Animation */
+  --animation-duration: 300ms;
+  --animation-ease: cubic-bezier(0.55, 0, 0.1, 1);
+  --animation-delay: calc(var(--animation-duration) / 5);
+
+  /* Layout Dimensions */
+  --layout-S: 600px;
+  --layout-M: 960px;
+  --layout-L: 1280px;
+  --layout-XL: 1920px;
+}
+
+/* RWD */
+@custom-media --screen-S (max-width: 960px);
+@custom-media --screen-M (min-width: 961px);
+@custom-media --screen-L (min-width: 961px) and (max-width: 1368px);
+@custom-media --screen-XL (min-width: 1369px);

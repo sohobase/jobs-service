@@ -1,0 +1,23 @@
+@import "../styles/colors.css";
+@import "../styles/fonts.css";
+@import "../styles/variables.css";
+
+:root {
+  --landing-height: 60vh;
+}
+.landing {
+  display: flex;
+  align-items: center;
+  height: var(--landing-height);
+  background-color: var(--background-contrast);
+
+  & .wrapper {
+    /* @TODO: this .wrapper properties have to be inherit from a common */
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+  }
+
+  &.slogan {
+
+  }
+}

@@ -8,18 +8,13 @@ import routes from '../../shared/routes';
 const router = new Router();
 
 router.get('*', (req, res) => {
-  match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
-    if (err) {
-      return res.status(500).send(err.message);
-    }
-
-    if (redirectLocation) {
-      return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-    }
+  match({ routes, location: req.url }, (error, redirect, props) => {
+    if (error) return res.status(500).send(error.message);
+    if (redirect) return res.redirect(302, redirect.pathname + redirect.search);
 
     let markup;
-    if (renderProps) {
-      markup = renderToString(<RouterContext {...renderProps} />);
+    if (props) {
+      markup = renderToString(<RouterContext {...props} />);
     } else {
       markup = renderToString(<NotFoundPage />);
       res.status(404);

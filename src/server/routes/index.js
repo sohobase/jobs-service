@@ -9,9 +9,9 @@ const app = express();
 
 app.set('views', path.resolve('.', 'src/server/views'));
 
-app.use('/', home);
-app.use('/', job);
-app.use('/', post);
+// app.use('/', home);
+// app.use('/', job);
+// app.use('/', post);
 app.use('/', reactRouter);
 
 export default app;

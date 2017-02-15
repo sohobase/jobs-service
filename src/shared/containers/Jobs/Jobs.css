@@ -1,0 +1,14 @@
+@import "../../styles/colors.css";
+@import "../../styles/fonts.css";
+@import "../../styles/variables.css";
+
+:root {
+
+}
+
+.wrapper {
+  padding: var(--offset) 0;
+  /* @TODO: this .wrapper properties have to be inherit from a common */
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}

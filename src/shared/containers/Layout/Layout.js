@@ -1,17 +1,20 @@
 import React, { PropTypes } from 'react';
-import styles from './Layout.css';
-
-const LayoutPropTypes = {
-  children: PropTypes.node,
-};
+import { Header, Footer, Landing } from '../../components';
+import style from './Layout.css';
 
 const Layout = ({ children }) => (
-  <div>
-    <h1 className={styles.title}>Home page</h1>
-    <div>{children}</div>
-  </div>
+  <article>
+    <Header />
+    <Landing />
+    <section>
+      {children}
+    </section>
+    <Footer />
+  </article>
 );
 
-Layout.propTypes = LayoutPropTypes;
+Layout.propTypes = {
+  children: PropTypes.node,
+};
 
 export default Layout;

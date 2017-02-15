@@ -1,0 +1,6 @@
+@import "../styles/variables.css";
+
+.footer {
+  padding: var(--offset);
+  text-align: center;
+}
