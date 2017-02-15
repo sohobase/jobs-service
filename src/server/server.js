@@ -1,7 +1,6 @@
 import Express from 'express';
 import C from '../shared/constants';
-import { Error, HotReload, Log, Stats, Webpack } from './middlewares';
-import routes from './routes';
+import { Error, HotReload, Log, Routes, Stats, Webpack } from './middlewares';
 
 const environment = process.env.NODE_ENV || C.environment.development;
 const port = process.env.PORT || 3000;
@@ -13,8 +12,7 @@ app.set('view engine', 'ejs');
 // -- Session configuration
 // @TODO
 
-// -- Middleware and routes
-app.use('/static', Express.static('static'));
+// -- Middlewares
 app.use(Webpack);
 if (environment !== C.environment.development) app.use(Stats);
 if (environment === C.environment.development) {
@@ -22,7 +20,7 @@ if (environment === C.environment.development) {
   app.use(HotReload);
 }
 app.use(Error);
-app.use('/', routes);
+app.use(Routes);
 
 // -- Start Server
 app.listen(port, (error) => {

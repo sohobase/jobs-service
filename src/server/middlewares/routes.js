@@ -1,13 +1,17 @@
+import path from 'path';
+import Express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-import { Router } from 'express';
 import NotFoundPage from '../../shared/components/NotFoundPage';
 import routes from '../../shared/routes';
 
-const router = new Router();
+const app = Express();
 
-router.get('*', (req, res) => {
+app.use('/static', Express.static('static'));
+app.set('views', path.resolve('.', 'src/server/views'));
+
+app.use('*', (req, res) => {
   match({ routes, location: req.url }, (error, redirect, props) => {
     if (error) return res.status(500).send(error.message);
     if (redirect) return res.redirect(302, redirect.pathname + redirect.search);
@@ -24,4 +28,4 @@ router.get('*', (req, res) => {
   });
 });
 
-export default router;
+export default app;
