@@ -1,0 +1,70 @@
+@import "../../styles/colors.css";
+@import "../../styles/fonts.css";
+@import "../../styles/variables.css";
+
+:root {
+  --job-divider: 0 1px var(--divider);
+  --job-header-offset: var(--offset) var(--offset) calc(var(--offset) * 2) var(--offset);
+  --job-content-side-width: calc(var(--unit) * 128);
+}
+
+.job {
+
+  & .header {
+    display: flex;
+    flex-direction: column;
+    padding: var(--job-header-offset);
+    box-shadow: var(--job-divider);
+
+    & .title {
+
+    }
+
+    & .date {
+      margin-bottom: var(--offset);
+    }
+  }
+
+  & .content {
+    display: flex;
+
+    & .text {
+      padding: var(--offset);
+
+      & * {
+        font-size: var(--font-size-normal);
+      }
+
+      & h1, & h2, & h3, & h4, & h5 {
+        font-size: var(--font-size-large);
+        line-height: var(--font-size-large);
+        font-weight: var(--font-weight-bold);
+        padding: var(--unit) 0;
+      }
+
+      & p {
+        margin-bottom: var(--offset);
+      }
+    }
+
+    & .side {
+      margin-top: var(--offset);
+      margin-left: var(--offset);
+      width: var(--job-content-side-width);
+
+      & .social {
+        display: flex;
+        flex-direction: column;
+        font-size: var(--font-size-small);
+
+        & > * {
+          padding: var(--unit);
+
+          &:not(:last-child) {
+            box-shadow: var(--job-divider);
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,8 +5,8 @@
 
 }
 
-.wrapper {
-  padding: var(--offset);
-  max-width: var(--content-max-width);
-  margin: 0 auto;
+.layout {
+  & .content {
+    @apply --wrapper;
+  }
 }

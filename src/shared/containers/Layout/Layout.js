@@ -6,7 +6,7 @@ const Layout = ({ children, location: { pathname } }) => (
   <article className={style.layout}>
     <Header />
     { pathname === '/' && <Landing /> }
-    <section className={style.wrapper}>
+    <section className={style.content}>
       {children}
     </section>
     <Footer />
