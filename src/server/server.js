@@ -2,6 +2,7 @@ import Express from 'express';
 import C from '../shared/constants';
 import { Error, HotReload, Log, Stats, Webpack } from './middlewares';
 import { api, router, webhookStripe } from './routes';
+import telegramBot from './services/telegram_bot';
 
 const environment = process.env.NODE_ENV || C.environment.development;
 const port = process.env.PORT || 3000;
@@ -29,6 +30,10 @@ app.use(router);
 
 // -- Start Server
 app.listen(port, (error) => {
-  if (error) return console.erroror(error); // eslint-disable-line no-console
+  if (error) {
+    telegramBot(error);
+    return console.error(error); // eslint-disable-line no-console
+  }
+  telegramBot(`Server running on http://localhost:${port} [${environment}]`);
   return console.info(`Server running on http://localhost:${port} [${environment}]`); // eslint-disable-line no-console
 });
