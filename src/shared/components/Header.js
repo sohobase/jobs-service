@@ -6,10 +6,10 @@ export default () => (
   <header className={style.header}>
     <div className={style.wrapper}>
       <Link to="/">
-        <h1 className={style.brand}>/remoto/</h1>
+        <img src="/static/img/logo.png" className={style.brand} />
       </Link>
       <nav className={style.navigation}>
-        <Link to="/job/1234">Ask us anything</Link>
+        <Link to="/help">Ask us anything</Link>
         <Link to="/job/1234">Example Job</Link>
         <Link to="/post">Post new offer</Link>
       </nav>

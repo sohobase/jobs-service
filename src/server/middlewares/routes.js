@@ -8,10 +8,9 @@ import routes from '../../shared/routes';
 
 const app = Express();
 
-app.set('view engine', 'ejs');
 app.set('views', path.resolve('.', 'src/server/views'));
-app.use('/static', Express.static('static'));
-app.use('*', (req, res) => {
+app.use('/static', Express.static(path.resolve('.', 'public')));
+app.use('/', (req, res) => {
   match({ routes, location: req.url }, (error, redirect, props) => {
     if (error) return res.status(500).send(error.message);
     if (redirect) return res.redirect(302, redirect.pathname + redirect.search);

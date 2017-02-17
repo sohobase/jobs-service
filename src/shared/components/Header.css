@@ -1,6 +1,10 @@
 @import "../styles/fonts.css";
 @import "../styles/variables.css";
 
+:root {
+  --header-brand-height: calc(var(--unit) * 2.4);
+}
+
 .header {
   &, & .wrapper {
     height: var(--header-height);
@@ -13,6 +17,7 @@
   }
 
   & .brand {
+    height: var(--header-brand-height);
     font-size: var(--font-size-extra-large);
     font-weight: var(--font-weight-extra-bold);
   }
