@@ -2,7 +2,7 @@ import Express from 'express';
 import C from '../shared/constants';
 import { Error, HotReload, Log, Session, Stats, Webpack } from './middlewares';
 import { api, router, webhookStripe } from './routes';
-import telegramBot from './services/telegram_bot';
+import telegramBot from './services/telegramBot';
 
 const { port = 3000, environment = C.environment.development } = process.env;
 const app = Express();
