@@ -1,11 +1,10 @@
 import Express from 'express';
 import C from '../shared/constants';
-import { Error, HotReload, Log, Stats, Webpack } from './middlewares';
+import { Error, HotReload, Log, Session, Stats, Webpack } from './middlewares';
 import { api, router, webhookStripe } from './routes';
 import telegramBot from './services/telegram_bot';
 
-const environment = process.env.NODE_ENV || C.environment.development;
-const port = process.env.PORT || 3000;
+const { port = 3000, environment = C.environment.development } = process.env;
 const app = Express();
 
 // -- Setup
@@ -15,6 +14,7 @@ app.set('view engine', 'ejs');
 // @TODO
 
 // -- Middlewares
+app.use(Session);
 app.use(Webpack);
 if (environment !== C.environment.development) app.use(Stats);
 if (environment === C.environment.development) {

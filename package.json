@@ -1,6 +1,6 @@
 {
   "name": "remoto",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A new way for get your next remote job",
   "private": true,
   "repository": {
@@ -55,6 +55,7 @@
     "dotenv": "^4.0.0",
     "ejs": "^2.5.5",
     "express": "4.14.1",
+    "express-session": "^1.15.1",
     "express-status-monitor": "0.1.9",
     "lowdb": "^0.15.5",
     "react": "15.4.2",
