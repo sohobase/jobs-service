@@ -1,6 +1,6 @@
 {
   "name": "remoto",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A new way for get your next remote job",
   "private": true,
   "repository": {
@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "babel-register": "^6.23.0",
+    "chrono-node": "^1.2.5",
     "cron": "^1.2.1",
     "css-modules-require-hook": "^4.0.5",
     "ejs": "^2.5.5",
