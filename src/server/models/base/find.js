@@ -1,6 +1,6 @@
 export default state => ({
 
-  find({ query, field, sortBy, limit = 1 }) {
+  find({ query = {}, field, sortBy, limit = 1 } = {}) {
     const store = state.db.get(state.key);
     let item;
     if (limit === 1) {
