@@ -1,0 +1,34 @@
+@import "../styles/colors.css";
+@import "../styles/fonts.css";
+@import "../styles/variables.css";
+
+:root {
+  --button-height: calc(3.6 * var(--unit));
+  --button-offset: 0 var(--offset);
+  --button-radius: calc(var(--button-height) / 15);
+}
+
+.button {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  outline: 0;
+  padding: var(--button-offset);
+  height: var(--button-height);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-semi-bold);
+  border-radius: var(--button-radius);
+
+  &.accent {
+    background-color: var(--color-accent);
+    color: white;
+
+    &:hover, &:active {
+      background-color: color(var(--color-accent) blackness(10%));
+    }
+  }
+
+  &:not(.accent) {
+    background-color: var(--color-primary);
+  }
+}
