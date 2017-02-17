@@ -47,7 +47,7 @@ x('https://jobspresso.co/', '.job_listings li', [schema])((error, values = []) =
         category: page.category,
         position,
         url: page.url,
-        // remote: false,
+        remote: location === 'Anywhere',
         location,
 
         company,
@@ -58,7 +58,7 @@ x('https://jobspresso.co/', '.job_listings li', [schema])((error, values = []) =
         text: page.text,
         state: 'imported',
         // highlight: false,
-        createdAt: page.createdAt, //@TODO: Convert to a JavaScript date
+        createdAt: page.createdAt,
       });
     }
   });
