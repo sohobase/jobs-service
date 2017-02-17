@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   height: var(--landing-height);
-  background-color: var(--background-contrast);
+  background-color: var(--color-primary);
 
   & .wrapper {
     @apply --wrapper;

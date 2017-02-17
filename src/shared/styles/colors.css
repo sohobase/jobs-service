@@ -1,7 +1,10 @@
 :root {
-  --color-text: #212121;
-  --background-contrast: #f5f5f5;
-  --background-body: #fafafa;
+  --color-text: #3c3c3b;
+  --color-text-secondary: #212121;
+  --color-primary: #ffde00;
+  --color-accent: #fc0271;
+  --color-background-contrast: #f5f5f5;
+  --color-background-body: #fafafa;
 
-  --divider: #cccccc;
+  --color-divider: #cccccc;
 }

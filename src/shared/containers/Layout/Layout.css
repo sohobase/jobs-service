@@ -1,4 +1,4 @@
-@import "../../styles/commons.css";
+@import "../../styles/reset.css";
 @import "../../styles/variables.css";
 
 :root {
@@ -6,6 +6,8 @@
 }
 
 .layout {
+  color: var(--color-text);
+
   & .content {
     @apply --wrapper;
   }

@@ -1,6 +1,14 @@
+@import "../styles/colors.css";
+@import "../styles/fonts.css";
 @import "../styles/variables.css";
 
+:root {
+  --footer-offset: calc(var(--offset) * 2) var(--offset);
+}
+
 .footer {
-  padding: var(--offset);
+  padding: var(--footer-offset);
+  font-size: var(--font-size-small);
   text-align: center;
+  background-color: var(--color-background-contrast);
 }

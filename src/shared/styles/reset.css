@@ -17,7 +17,9 @@ body {
   position: absolute;
   -webkit-touch-callout: none;
   width: 100%;
-  background-color: var(--background-body);
+  color: var(--color-text);
+  background-color: var(--color-background-body);
+
 
   & * {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 1);

@@ -3,7 +3,7 @@
 @import "../../styles/variables.css";
 
 :root {
-  --job-divider: 0 1px var(--divider);
+  --job-divider: 0 1px var(--color-divider);
   --job-header-offset: var(--offset) var(--offset) calc(var(--offset) * 2) var(--offset);
   --job-content-side-width: calc(var(--unit) * 128);
 }

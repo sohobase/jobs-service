@@ -7,5 +7,5 @@ hook({
 });
 
 require('./server');
-// require('./providers/WeWorkRemotely');
-// require('./providers/RemoteOK');
+// require('./crons/example');
+// require('./providers/Jobspresso');
