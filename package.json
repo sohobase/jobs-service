@@ -49,6 +49,7 @@
   "dependencies": {
     "babel-register": "^6.23.0",
     "chrono-node": "^1.2.5",
+    "classnames": "^2.2.5",
     "cron": "^1.2.1",
     "css-modules-require-hook": "^4.0.5",
     "ejs": "^2.5.5",
