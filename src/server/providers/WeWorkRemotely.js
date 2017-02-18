@@ -8,7 +8,7 @@ const x = Xray({
   filters: {
 
     category(value) {
-      return valueBetween(value, 'See more ', ' jobs');
+      return valueBetween(value, 'See more ', ' jobs').toLowerCase();
     },
 
     id(value) {
