@@ -1,0 +1,64 @@
+@import "../styles/colors.css";
+@import "../styles/fonts.css";
+@import "../styles/variables.css";
+
+:root {
+  --item-offset: calc(var(--offset) * 0.5) var(--offset);
+  --item-background: var(--color-background-body);
+  --item-background-hover: color(var(--item-background) blackness(5%));
+  --item-label-font-size: calc(var(--font-size-tiny) * 0.85);
+  --item-label-offset: calc(var(--unit) * 0.25) calc(var(--unit) * 0.25);
+  --item-image-size: calc(var(--unit) * 4.8);
+}
+
+.joblistitem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: var(--item-offset);
+  color: var(--color-text);
+  background-color: var(--item-background);
+
+  /* -- children */
+  & .new {
+    position: absolute;
+    display: block;
+    left: 0;
+    padding: var(--item-label-offset);
+    font-size: var(--item-label-font-size);
+    font-weight: var(--font-weight-extra-bold);
+    background-color: var(--color-accent);
+    color: white;
+  }
+
+  & .image {
+    width: var(--item-image-size);
+    height: var(--item-image-size);
+    background-color: var(--color-divider);
+  }
+
+  & .info {
+    display: flex;
+    flex-direction: column;
+    margin: 0 var(--offset);
+    flex-grow: 1;
+
+    & .position {
+      font-size: var(--font-size-large);
+    }
+  }
+
+  & .info .company,
+  & .date {
+    color: var(--color-text-secondary);
+  }
+
+  /* -- behaviors */
+  &:hover {
+    background-color: var(--item-background-hover);
+
+    & .info .position {
+      color: var(--color-accent);
+    }
+  }
+}
