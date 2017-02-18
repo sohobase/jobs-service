@@ -6,22 +6,19 @@ export default class Jobs extends Component {
 
   static propTypes = {
     dataSource: PropTypes.arrayOf(PropTypes.object),
+    store: PropTypes.arrayOf(PropTypes.object),
   }
 
   constructor(props) {
     super(props);
+    const { dataSource, store } = this.props;
     this.state = {
-      dataSource: this.props.dataSource || [],
+      dataSource: dataSource || store || [],
     };
   }
 
-  componentWillMount() {
-    this.setState({ dataSource: this.props.dataSource });
-  }
-
   render() {
-    const { dataSource = [] } = this.state;
-
+    const { dataSource } = this.state;
     return (
       <ul className={style.jobs}>
         { dataSource.map(props => <JobListItem {...props} />) }
