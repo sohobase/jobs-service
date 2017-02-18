@@ -16,12 +16,11 @@ app.use('/', (req, res) => {
     if (redirect) return res.redirect(302, redirect.pathname + redirect.search);
 
     let markup;
-    const store = [{ name: 'Test 1' }, { name: 'Test 2' }];
     if (routerProps) {
       const renderProps = {
         ...routerProps,
         createElement: (Component, props) => (
-          <Component {...props} dataSource={store} />
+          <Component {...props} dataSource={[{ name: 'Test 1' }, { name: 'Test 2' }]} />
         ),
       };
 
@@ -31,7 +30,7 @@ app.use('/', (req, res) => {
       res.status(404);
     }
 
-    return res.render('index', { markup, store });
+    return res.render('index', { markup });
   });
 });
 
