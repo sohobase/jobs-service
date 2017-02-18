@@ -7,6 +7,9 @@ const x = Xray({
     id(value) {
       return value.split('/jobs/')[1].replace(/\D/g,'');
     },
+    date(value) {
+      return Chrono.parseDate(value);
+    }
   },
 });
 
@@ -14,8 +17,13 @@ const schema = {
   id: 'a@href | id',
   position: '.jobtitle',
   company: '.company',
-  page: x('a@href', ['dd']),
+  page: x('a@href', {
+    details: ['dd'],
+    createdAt: 'time@datetime | date',
+    companyUrl: 'dd a@href'
+  }),
 };
+
 
 x('https://remotefriendly.work/', 'tr', [schema])((error, values) => {
   console.log(error);
@@ -25,9 +33,10 @@ x('https://remotefriendly.work/', 'tr', [schema])((error, values) => {
       id,
       position,
       company: company.replace(/\t|\n/g, ''),
-      category: page[1],
-      createdAt: page[2],
-      region: page[3]
+      category: page.details[1],
+      createdAt: page.createdAt,
+      companyUrl: page.companyUrl,
+      region: page.details[3],
     };
   });
 
