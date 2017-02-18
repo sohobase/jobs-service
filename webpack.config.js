@@ -2,11 +2,12 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+// -- Environment
+const environment = process.env.NODE_ENV;
+const config = require(`./webpack.${environment}`); // eslint-disable-line
+
 module.exports = {
-  entry: [
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-    path.join(__dirname, 'src', 'client', 'index.js'),
-  ],
+  entry: config.entry,
   output: {
     path: path.join(__dirname, 'src', 'server', 'static'),
     filename: 'remoto.js',
@@ -28,7 +29,7 @@ module.exports = {
               loader: 'postcss-loader',
               options: {
                 plugins: () => [
-                  require('postcss-import')({ addDependencyTo: webpack }),
+                  require('postcss-import')(),
                   require('postcss-cssnext')({ browsers: ['last 3 versions'] }),
                   require('postcss-reporter')({ clearMessages: true }),
                 ],
@@ -46,12 +47,5 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: { warnings: false },
-    //   mangle: true,
-    //   sourcemap: false,
-    //   beautify: false,
-    //   dead_code: true,
-    // }),
   ],
 };

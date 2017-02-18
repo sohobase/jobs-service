@@ -4,7 +4,7 @@ import { Error, HotReload, Log, Session, Stats, Webpack } from './middlewares';
 import { api, router, webhookStripe } from './routes';
 import telegramBot from './services/telegramBot';
 
-const { port = 3000, environment = C.environment.development } = process.env;
+const { port = 3000, NODE_ENV = C.environment.development } = process.env;
 const app = Express();
 
 // -- Setup
@@ -16,8 +16,8 @@ app.set('view engine', 'ejs');
 // -- Middlewares
 app.use(Session);
 app.use(Webpack);
-if (environment !== C.environment.development) app.use(Stats);
-if (environment === C.environment.development) {
+if (NODE_ENV !== C.environment.development) app.use(Stats);
+if (NODE_ENV === C.environment.development) {
   app.use(Log);
   app.use(HotReload);
 }
@@ -34,6 +34,6 @@ app.listen(port, (error) => {
     telegramBot(error);
     return console.error(error); // eslint-disable-line no-console
   }
-  telegramBot(`Server running on http://localhost:${port} [${environment}]`);
-  return console.info(`Server running on http://localhost:${port} [${environment}]`); // eslint-disable-line no-console
+  telegramBot(`Server running on http://localhost:${port} [${NODE_ENV}]`);
+  return console.info(`Server running on http://localhost:${port} [${NODE_ENV}]`); // eslint-disable-line no-console
 });
