@@ -8,7 +8,7 @@
     "type": "git"
   },
   "scripts": {
-    "start": "NODE_ENV=production npm run server",
+    "start": "NODE_ENV=production pm2 start ecosystem.json",
     "dev": "NODE_ENV=development npm run server",
     "server": "node src/server",
     "test": "jest -i",

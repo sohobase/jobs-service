@@ -1,0 +1,7 @@
+{
+  "apps" : [{
+    "name"        : "remoto_work",
+    "script"      : "src/server",
+    "watch"       : false
+  }]
+}
