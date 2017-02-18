@@ -10,7 +10,8 @@ router.get('/job/:id', (req, res) => {
   });
 
   if (!offer) return res.status(404).json({ error: 'Not Found' });
-  delete offer url;
+
+  delete offer.url;
   return res.json(offer);
 });
 
