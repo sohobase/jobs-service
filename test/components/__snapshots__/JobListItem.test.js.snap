@@ -1,0 +1,11 @@
+exports[`<JobListItem /> renders a name property 1`] = `
+<li
+  className="joblistitem">
+  Test job
+</li>
+`;
+
+exports[`<JobListItem /> renders by default 1`] = `
+<li
+  className="joblistitem" />
+`;

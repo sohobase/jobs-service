@@ -1,0 +1,34 @@
+exports[`<Header /> renders by default 1`] = `
+<header
+  className="header">
+  <div
+    className="wrapper">
+    <a
+      onClick={[Function]}
+      style={Object {}}>
+      <img
+        alt=""
+        className="brand"
+        src="/static/img/logo.png" />
+    </a>
+    <nav
+      className="navigation">
+      <a
+        onClick={[Function]}
+        style={Object {}}>
+        Ask us anything
+      </a>
+      <a
+        onClick={[Function]}
+        style={Object {}}>
+        Example Job
+      </a>
+      <button
+        className="button accent"
+        onClick={undefined}>
+        Post new offer
+      </button>
+    </nav>
+  </div>
+</header>
+`;

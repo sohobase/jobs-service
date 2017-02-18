@@ -1,0 +1,14 @@
+exports[`<Landing /> renders by default 1`] = `
+<section
+  className="landing">
+  <div
+    className="wrapper">
+    <h2
+      className="slogan">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </h2>
+    <input
+      type="search" />
+  </div>
+</section>
+`;

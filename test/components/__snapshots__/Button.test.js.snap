@@ -1,0 +1,19 @@
+exports[`<Button /> accepts a className property 1`] = `
+<button
+  className="button my_button"
+  onClick={undefined} />
+`;
+
+exports[`<Button /> render a caption property 1`] = `
+<button
+  className="button"
+  onClick={undefined}>
+  Test button
+</button>
+`;
+
+exports[`<Button /> renders by default 1`] = `
+<button
+  className="button"
+  onClick={undefined} />
+`;
