@@ -5,21 +5,19 @@ import style from './Jobs.css';
 export default class Jobs extends Component {
   static propTypes = {
     dataSource: PropTypes.arrayOf(PropTypes.object),
+    store: PropTypes.object,
   }
 
   constructor(props) {
     super(props);
+    const { dataSource, store } = this.props;
     this.state = {
-      dataSource: this.props.dataSource || [],
+      dataSource: dataSource || store || [],
     };
   }
 
-  componentWillMount() {
-    this.setState({ dataSource: this.props.dataSource });
-  }
-
   render() {
-    const { dataSource = [] } = this.state;
+    const { dataSource } = this.state;
     return (
       <ul>
         { dataSource.map(job => <JobListItem name={job.name} />) }
