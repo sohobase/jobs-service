@@ -3,11 +3,10 @@ import { Offer } from '../models';
 
 const router = new Router();
 
+
 router.get('/job/:id', (req, res) => {
   const { id } = req.params;
-  const offer = Offer.find({
-    query: { id },
-  });
+  const offer = Offer.find({ query: { id, state: 'ready' } });
 
   if (!offer) return res.status(404).json({ error: 'Not Found' });
 
@@ -15,11 +14,24 @@ router.get('/job/:id', (req, res) => {
   return res.json(offer);
 });
 
+
 router.get('/job/:id/redirect', (req, res) => {
   const { id } = req.params;
-  const offer = Offer.find({ query: { id } });
+  const offer = Offer.find({ query: { id, state: 'ready' } });
 
-  return res.json({ url: offer && offer.url });
+  return res.json({ url: offer ? offer.url : undefined });
+});
+
+
+router.get('/jobs/:category', (req, res) => {
+  const { category } = req.params;
+
+  const offers = Offer.find({
+    query: { category, state: 'ready' },
+    limit: 32,
+  });
+
+  return res.json({ offers });
 });
 
 
@@ -33,12 +45,6 @@ router.get('/session', (req, res) => {
   }
 
   res.json({ session });
-});
-
-router.get('/stats', (req, res) => {
-  res.json({
-    offers: Offer.find({ limit: 1 }),
-  });
 });
 
 export default router;

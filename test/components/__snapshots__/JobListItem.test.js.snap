@@ -1,11 +1,49 @@
 exports[`<JobListItem /> renders a name property 1`] = `
-<li
-  className="joblistitem">
-  Test job
-</li>
+<a
+  onClick={[Function]}
+  style={Object {}}>
+  <li
+    className="joblistitem undefined">
+    <abbr
+      className="new">
+      NEW
+    </abbr>
+    <div
+      className="info">
+      <small
+        className="company" />
+      <strong
+        className="position" />
+    </div>
+    <small
+      className="date">
+      a few seconds ago
+    </small>
+  </li>
+</a>
 `;
 
 exports[`<JobListItem /> renders by default 1`] = `
-<li
-  className="joblistitem" />
+<a
+  onClick={[Function]}
+  style={Object {}}>
+  <li
+    className="joblistitem undefined">
+    <abbr
+      className="new">
+      NEW
+    </abbr>
+    <div
+      className="info">
+      <small
+        className="company" />
+      <strong
+        className="position" />
+    </div>
+    <small
+      className="date">
+      a few seconds ago
+    </small>
+  </li>
+</a>
 `;

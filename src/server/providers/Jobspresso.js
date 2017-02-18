@@ -5,6 +5,11 @@ import telegramBot from '../services/telegramBot';
 
 const x = Xray({
   filters: {
+
+    category(value) {
+      return value.toLowerCase();
+    },
+
     id(value) {
       return (value && value.length > 0) ? value.split('-')[1] : undefined;
     },
@@ -29,7 +34,7 @@ const schema = {
   company: '.job_listing-company strong',
   location: '.job_listing-location | location',
   page: x('a.job_listing-clickbox@href', {
-    category: '.job-type',
+    category: '.job-type | category',
     createdAt: '.date-posted date | date',
     companyUrl: '.job-company a@href',
     companyAbout: '.job-company-about | about',
