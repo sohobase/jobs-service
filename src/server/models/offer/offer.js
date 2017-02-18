@@ -18,6 +18,8 @@ export default (() => {
       companyImage: undefined,
 
       text: undefined,
+      salary: undefined,
+      skills: [],
       state: 'draft',
       highlight: false,
       createdAt: undefined,
