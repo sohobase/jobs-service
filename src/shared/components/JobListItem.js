@@ -17,8 +17,6 @@ const JobListItem = (props = {}) => {
   const isNew = ProviderDate.inLast24Hours(createdAt);
   const classes = classnames(style.joblistitem, style[category]);
 
-  console.log(isNew);
-
   return (
     <Link to={`/job/${id}`}>
       <li className={classes}>
