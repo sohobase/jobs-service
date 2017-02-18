@@ -1,6 +1,6 @@
 {
   "name": "remoto",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A new way for get your next remote job",
   "private": true,
   "repository": {
@@ -57,6 +57,7 @@
     "express": "4.14.1",
     "express-session": "^1.15.1",
     "express-status-monitor": "0.1.9",
+    "firebase-admin": "^4.1.1",
     "lowdb": "^0.15.5",
     "react": "15.4.2",
     "react-dom": "15.4.2",

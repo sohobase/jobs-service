@@ -43,3 +43,6 @@ stats.json
 
 # store
 store
+
+# Others
+.DS_Store
