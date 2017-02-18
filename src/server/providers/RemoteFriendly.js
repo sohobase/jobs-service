@@ -14,13 +14,14 @@ const x = Xray({
 });
 
 const schema = {
-  id: 'a@href | id',
+  id:       'a@href | id',
   position: '.jobtitle',
-  company: '.company',
-  page: x('a@href', {
-    details: ['dd'],
-    createdAt: 'time@datetime | date',
-    companyUrl: 'dd a@href'
+  company:  '.company',
+  page:     x('a@href', {
+    details:    ['dd'],
+    createdAt:  'time@datetime | date',
+    companyUrl: 'dd a@href',
+    url:
   }),
 };
 
@@ -29,14 +30,15 @@ x('https://remotefriendly.work/', 'tr', [schema])((error, values) => {
   console.log(error);
   const jobs = values.map(({ id, position, company, page }) => {
     return {
-      provider: 'remotefriendly.work',
+      provider:  'remotefriendly.work',
       id,
       position,
-      company: company.replace(/\t|\n/g, ''),
-      category: page.details[1],
-      createdAt: page.createdAt,
+      company:    company.replace(/\t|\n/g, ''),
+      category:   page.details[1],
+      createdAt:  page.createdAt,
       companyUrl: page.companyUrl,
-      region: page.details[3],
+      region:     page.details[3],
+      url:        page.url
     };
   });
 
