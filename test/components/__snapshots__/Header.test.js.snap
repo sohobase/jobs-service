@@ -18,11 +18,6 @@ exports[`<Header /> renders by default 1`] = `
         style={Object {}}>
         Ask us anything
       </a>
-      <a
-        onClick={[Function]}
-        style={Object {}}>
-        Example Job
-      </a>
       <button
         className="button accent"
         onClick={undefined}>

@@ -9,16 +9,23 @@ exports[`<JobListItem /> renders a name property 1`] = `
       NEW
     </abbr>
     <div
-      className="info">
+      className="top">
       <small
-        className="company" />
-      <strong
-        className="position" />
+        className="category">
+        <a
+          onClick={[Function]}
+          style={Object {}} />
+         - 
+      </small>
+      <small
+        className="date">
+        a few seconds ago
+      </small>
     </div>
+    <strong
+      className="position" />
     <small
-      className="date">
-      a few seconds ago
-    </small>
+      className="about" />
   </li>
 </a>
 `;
@@ -34,16 +41,23 @@ exports[`<JobListItem /> renders by default 1`] = `
       NEW
     </abbr>
     <div
-      className="info">
+      className="top">
       <small
-        className="company" />
-      <strong
-        className="position" />
+        className="category">
+        <a
+          onClick={[Function]}
+          style={Object {}} />
+         - 
+      </small>
+      <small
+        className="date">
+        a few seconds ago
+      </small>
     </div>
+    <strong
+      className="position" />
     <small
-      className="date">
-      a few seconds ago
-    </small>
+      className="about" />
   </li>
 </a>
 `;
