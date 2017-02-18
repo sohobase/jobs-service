@@ -1,4 +1,5 @@
 import http from 'http';
+import telegramBot from '../services/telegramBot';
 import { Offer } from '../models';
 
 const callback = (response) => {
@@ -11,12 +12,12 @@ const callback = (response) => {
   response.on('end', () => {
     const result = JSON.parse(str);
 
-    result.map(({ id, application, company, date, description, salary, tags, title }) => {
+    result.forEach(({ id, application, company, date, description, salary, tags, title }) => {
       if (id) {
         let remote = false;
         let location;
         const skills = [];
-        tags.map((tag) => {
+        tags.forEach((tag) => {
           if (tag.type === 'job-skill') {
             skills.push(tag.displayName.toLowerCase());
           }
@@ -24,7 +25,6 @@ const callback = (response) => {
             remote = tag.name === 'remote';
             if (tag.name !== 'remote') location = tag.displayName;
           }
-          return tag;
         });
         Offer.consolidate('pandajobs', id, {
           // category,
@@ -45,9 +45,12 @@ const callback = (response) => {
           createdAt: date.create,
         });
       }
-      return id;
     });
+    telegramBot('⚙️ /cron/pandajobs : 🏁');
   });
 };
 
-http.request('http://api.pnd.gs/v1/jobs?limit=20&page=1', callback).end();
+http
+  .request('http://api.pnd.gs/v1/jobs?limit=20&page=1', callback)
+  .on('error', error => telegramBot(`⚙️ /cron/pandajobs : 🚨 (${error})`))
+  .end();

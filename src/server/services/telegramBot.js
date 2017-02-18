@@ -9,6 +9,5 @@ export default (message, props = {}) => {
     bot = new TeleBot(TELEGRAM_BOT_TOKEN);
     bot.connect();
   }
-
-  bot.sendMessage(TELEGRAM_CHAT_ID, message, { ...props });
+  bot.sendMessage(TELEGRAM_CHAT_ID, message);
 };
