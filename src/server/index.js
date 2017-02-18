@@ -7,5 +7,6 @@ hook({
 });
 
 require('./server');
+require('./providers/RemoteFriendly')
 // require('./crons/example');
 // require('./providers/Jobspresso');
