@@ -53,6 +53,7 @@
     "webpack-hot-middleware": "^2.16.1"
   },
   "dependencies": {
+    "babel-jest": "^18.0.0",
     "babel-register": "^6.23.0",
     "chrono-node": "^1.2.5",
     "classnames": "^2.2.5",
