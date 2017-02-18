@@ -1,0 +1,11 @@
+machine:
+  node:
+    version: 7.5.0
+test:
+  override:
+    - npm test
+deployment:
+  master:
+    branch: master
+    commands:
+      - ./node_modules/.bin/pm2 deploy deploy.pm2.json master update --force
