@@ -1,0 +1,14 @@
+machine:
+  node:
+    version: 6.3.1
+test:
+  pre:
+    - npm run lint:js
+    - npm run lint:css
+  override:
+    - npm test
+deployment:
+  master:
+    branch: master
+    commands:
+      - ./node_modules/.bin/pm2 deploy deploy.pm2.json master update --force
