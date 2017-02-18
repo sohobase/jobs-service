@@ -11,13 +11,20 @@ const app = Express();
 app.set('views', path.resolve('.', 'src/server/views'));
 app.use('/static', Express.static(path.resolve('.', 'public')));
 app.use('/', (req, res) => {
-  match({ routes, location: req.url }, (error, redirect, props) => {
+  match({ routes, location: req.url }, (error, redirect, routerProps) => {
     if (error) return res.status(500).send(error.message);
     if (redirect) return res.redirect(302, redirect.pathname + redirect.search);
 
     let markup;
-    if (props) {
-      markup = renderToString(<RouterContext {...props} />);
+    if (routerProps) {
+      const renderProps = {
+        ...routerProps,
+        createElement: (Component, props) => (
+          <Component {...props} dataSource={[{ name: 'Test 1' }, { name: 'Test 2' }]} />
+        ),
+      };
+
+      markup = renderToString(<RouterContext {...renderProps} />);
     } else {
       markup = renderToString(<NotFoundPage />);
       res.status(404);
