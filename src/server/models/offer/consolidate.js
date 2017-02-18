@@ -7,7 +7,9 @@ export default state => ({
     const offerInStore = state.find({ query });
 
     if (!offerInStore) {
-      telegramBot(`✅ "${data.position}" from #${provider} saved correctly.`);
+      const { position, url } = data;
+      const message = `✅ "${position}" from #${provider} saved correctly.`;
+      telegramBot(message, { markup: url });
     }
 
     return state.update({ query, data, upsert: true });

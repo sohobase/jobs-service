@@ -42,7 +42,7 @@ const schema = {
 x('https://jobspresso.co/', '.job_listings li', [schema])((error, values = []) => {
   telegramBot(`⚙️ /cron/jobespresso : ${error ? ("🚨" + error) : "🏁"}`);
 
-  values.map(({ id, position, company, location, page }) => {
+  values.forEach(({ id, position, company, location, page }) => {
     if (id) {
       Offer.consolidate('jobspresso', id, {
         category: page.category,

@@ -43,7 +43,7 @@ const schema = {
 x('https://weworkremotely.com/', '.jobs li', [schema])((error, values = []) => {
   telegramBot(`⚙️ /cron/weworkremotely : ${error ? ("🚨" + error) : "🏁"}`);
 
-  values.map(({ id, position, company, createdAt, page = {} }) => {
+  values.forEach(({ id, position, company, createdAt, page = {} }) => {
     Offer.consolidate('weworkremotely', id, {
       category: page.category,
       position,
