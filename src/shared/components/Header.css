@@ -7,13 +7,15 @@
 }
 
 .header {
-  &, & .wrapper {
+  &,
+  & .wrapper {
     height: var(--header-height);
   }
 
   & .wrapper {
     display: flex;
     align-items: center;
+
     @apply --wrapper;
   }
 

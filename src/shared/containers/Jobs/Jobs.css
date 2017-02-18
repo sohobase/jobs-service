@@ -2,11 +2,6 @@
 @import "../../styles/fonts.css";
 @import "../../styles/variables.css";
 
-:root {
-
-}
-
-.wrapper {
-  padding: var(--offset) 0;
-  @apply --wrapper;
+.jobs {
+  margin: var(--offset) 0;
 }

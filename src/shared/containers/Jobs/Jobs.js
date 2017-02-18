@@ -3,6 +3,7 @@ import { JobListItem } from '../../components';
 import style from './Jobs.css';
 
 export default class Jobs extends Component {
+
   static propTypes = {
     dataSource: PropTypes.arrayOf(PropTypes.object),
   }
@@ -20,9 +21,10 @@ export default class Jobs extends Component {
 
   render() {
     const { dataSource = [] } = this.state;
+
     return (
-      <ul>
-        { dataSource.map(job => <JobListItem name={job.name} />) }
+      <ul className={style.jobs}>
+        { dataSource.map(props => <JobListItem {...props} />) }
       </ul>
     );
   }
