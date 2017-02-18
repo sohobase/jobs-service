@@ -1,40 +1,65 @@
+import Chrono from 'chrono-node';
 import Xray from 'x-ray';
+import { Offer } from '../models';
+import telegramBot from '../services/telegramBot';
+import valueBetween from './modules/valueBetween';
 
 const x = Xray({
   filters: {
+
+    category(value) {
+      return valueBetween(value, 'See more ', ' jobs');
+    },
+
     id(value) {
       return value.split('/jobs/')[1];
+    },
+
+    location(value) {
+      return value.replace('Headquarters: ', '');
+    },
+
+    createdAt(value) {
+      return Chrono.parseDate(value);
     },
   },
 });
 
 const schema = {
   id: 'a@href | id',
-  title: 'a .title',
+  position: 'a .title',
   company: 'a .company',
-  url: 'a@href',
-  createdAt: 'a .date',
+  createdAt: 'a .date | createdAt',
   page: x('a@href', {
-    location: '.location',
-    companyUrl: 'h2 a@href',
-    text: '.listing-container@html',
+    category: '.perma-nav a | category',
+    location: '.location | location',
+    url: '.apply a@href',
+    companyUrl: '.listing-header-container h2 a@href',
+    companyImage: '.listing-logo img@src',
+    text: '.listing-container',
   }),
 };
 
-x('https://weworkremotely.com/', '.jobs li', [schema])((error, values) => {
-  const offers = values.map(({ id, title, company, url, createdAt, page = {} }) => {
-    return {
-      provider: 'weworkremotely.com',
-      id,
-      url,
-      title,
+x('https://weworkremotely.com/', '.jobs li', [schema])((error, values = []) => {
+  telegramBot(`⚙️ /cron/weworkremotely : ${error ? ("🚨" + error) : "🏁"}`);
+
+  values.map(({ id, position, company, createdAt, page = {} }) => {
+    Offer.consolidate('weworkremotely', id, {
+      category: page.category,
+      position,
+      url: page.url,
+      // remote,
+      location: page.location,
+
       company,
       companyUrl: page.companyUrl,
-      location: page.location,
-      text: page.text,
-      createdAt,
-    };
-  });
+      // companyAbout:,
+      companyImage: page.companyImage,
 
-  console.log(offers);
+      text: page.text,
+      state: 'ready',
+      // highlight: false,
+      createdAt,
+    });
+  });
 });
