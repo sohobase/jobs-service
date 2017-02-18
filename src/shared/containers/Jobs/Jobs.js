@@ -1,16 +1,27 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { JobListItem } from '../../components';
 import style from './Jobs.css';
 
-const Jobs = ({ dataSource }) => (
-  <ul>
-    <JobListItem name="hello" />
-    <JobListItem name="world" />
-  </ul>
-);
+export default class Jobs extends Component {
+  static propTypes = {
+    dataSource: PropTypes.arrayOf(PropTypes.object),
+    store: PropTypes.object,
+  }
 
-Jobs.propTypes = {
-  dataSource: PropTypes.arrayOf(PropTypes.object),
-};
+  constructor(props) {
+    super(props);
+    const { dataSource, store } = this.props;
+    this.state = {
+      dataSource: dataSource || store || [],
+    };
+  }
 
-export default Jobs;
+  render() {
+    const { dataSource } = this.state;
+    return (
+      <ul>
+        { dataSource.map(job => <JobListItem name={job.name} />) }
+      </ul>
+    );
+  }
+}
