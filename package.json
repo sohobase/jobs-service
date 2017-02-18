@@ -8,8 +8,8 @@
     "type": "git"
   },
   "scripts": {
-    "start": "NODE_ENV=production & npm run server",
-    "dev": "NODE_ENV=development & npm run server",
+    "start": "NODE_ENV=production npm run server",
+    "dev": "NODE_ENV=development npm run server",
     "server": "node src/server",
     "test": "jest -i",
     "test:watch": "jest --watch",
