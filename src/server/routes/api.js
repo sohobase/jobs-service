@@ -3,9 +3,24 @@ import { Offer } from '../models';
 
 const router = new Router();
 
-router.get('/job/:id/redirect', (req, res) => {
-  res.send('New here? 💋');
+router.get('/job/:id', (req, res) => {
+  const { id } = req.params;
+  const offer = Offer.find({
+    query: { id },
+  });
+
+  if (!offer) return res.status(404).json({ error: 'Not Found' });
+  delete offer url;
+  return res.json(offer);
 });
+
+router.get('/job/:id/redirect', (req, res) => {
+  const { id } = req.params;
+  const offer = Offer.find({ query: { id } });
+
+  return res.json({ url: offer && offer.url });
+});
+
 
 router.get('/session', (req, res) => {
   const { session } = req;

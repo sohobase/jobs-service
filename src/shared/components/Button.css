@@ -5,7 +5,7 @@
 :root {
   --button-height: calc(3.6 * var(--unit));
   --button-offset: 0 var(--offset);
-  --button-radius: calc(var(--button-height) / 15);
+  --button-radius: calc(var(--button-height) / 2);
 }
 
 .button {
@@ -17,13 +17,15 @@
   height: var(--button-height);
   font-size: var(--font-size-normal);
   font-weight: var(--font-weight-semi-bold);
+  line-height: var(--button-height);
   border-radius: var(--button-radius);
 
   &.accent {
     background-color: var(--color-accent);
     color: white;
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       background-color: color(var(--color-accent) blackness(10%));
     }
   }
