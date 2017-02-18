@@ -20,9 +20,18 @@ export default class Jobs extends Component {
   render() {
     const { dataSource } = this.state;
     return (
-      <ul className={style.jobs}>
-        { dataSource.map(props => <JobListItem {...props} />) }
-      </ul>
+      <div className={style.jobs}>
+        <ul className={style.list}>
+          { dataSource.map(props => <JobListItem {...props} />) }
+        </ul>
+
+        <aside>
+          <div className={style.box}>
+            <p>We have a growing community of 200,000 designers, developers and technology professionals using Panda to keep them up to date. It’s a place where companies and talent connect.</p>
+          </div>
+          <div className={style.box} />
+        </aside>
+      </div>
     );
   }
 }

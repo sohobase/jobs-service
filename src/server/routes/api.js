@@ -34,7 +34,6 @@ router.get('/jobs/:category', (req, res) => {
   return res.json({ offers });
 });
 
-
 router.get('/session', (req, res) => {
   const { session } = req;
 

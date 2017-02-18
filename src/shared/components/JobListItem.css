@@ -3,7 +3,7 @@
 @import "../styles/variables.css";
 
 :root {
-  --item-offset: calc(var(--offset) * 0.5) var(--offset);
+  --item-offset: calc(var(--offset) * 1.5);
   --item-background: var(--color-background-body);
   --item-background-hover: color(var(--item-background) blackness(5%));
   --item-label-font-size: calc(var(--font-size-tiny) * 0.85);
@@ -14,16 +14,19 @@
 .joblistitem {
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   padding: var(--item-offset);
   color: var(--color-text);
-  background-color: var(--item-background);
+  border-bottom: solid 1px var(--color-divider);
+
+  @apply --box;
 
   /* -- children */
   & .new {
     position: absolute;
     display: block;
-    left: 0;
+    top: var(--offset);
+    left: calc(var(--offset) * -0.5);
     padding: var(--item-label-offset);
     font-size: var(--item-label-font-size);
     font-weight: var(--font-weight-extra-bold);
@@ -32,32 +35,36 @@
   }
 
   & .image {
+    display: none;
     width: var(--item-image-size);
     height: var(--item-image-size);
     background-color: var(--color-divider);
   }
 
-  & .info {
+  & .top {
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
     display: flex;
-    flex-direction: column;
-    margin: 0 var(--offset);
-    flex-grow: 1;
 
-    & .position {
-      font-size: var(--font-size-large);
+    & .category {
+      flex-grow: 1;
     }
   }
 
-  & .info .company,
-  & .date {
-    color: var(--color-text-secondary);
+  & .position {
+    font-size: var(--font-size-normal);
+    margin: calc(var(--offset) * 0.5) 0;
+  }
+
+  & .about {
+    height: calc(var(--font-size-normal) * 2);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   /* -- behaviors */
   &:hover {
-    background-color: var(--item-background-hover);
-
-    & .info .position {
+    & .position {
       color: var(--color-accent);
     }
   }

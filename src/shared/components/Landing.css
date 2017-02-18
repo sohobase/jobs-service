@@ -3,19 +3,22 @@
 @import "../styles/variables.css";
 
 :root {
-  --landing-height: 60vh;
+  --landing-offset: calc(var(--offset) * 2) 0;
+  --landing-background: white;
 }
+
 .landing {
   display: flex;
+  padding: var(--landing-offset);
   align-items: center;
-  height: var(--landing-height);
-  background-color: var(--color-primary);
+  background-color: var(--landing-background);
+  border-bottom: solid 1px var(--color-divider);
 
   & .wrapper {
     @apply --wrapper;
   }
 
-  &.slogan {
+  & .slogan {
 
   }
 }

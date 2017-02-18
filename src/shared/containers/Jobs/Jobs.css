@@ -3,5 +3,27 @@
 @import "../../styles/variables.css";
 
 .jobs {
+  display: flex;
   margin: var(--offset) 0;
+
+  & .list {
+    width: 65%;
+    background-color: white;
+    flex-grow: 1;
+
+    & > * {
+      @apply --box;
+    }
+  }
+
+  & aside {
+    @apply --aside;
+  }
+
+  & .box {
+    padding: var(--offset);
+    min-height: 130px;
+
+    @apply --box;
+  }
 }

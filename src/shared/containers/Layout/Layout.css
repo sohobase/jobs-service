@@ -2,13 +2,13 @@
 @import "../../styles/variables.css";
 
 :root {
-
 }
 
 .layout {
   color: var(--color-text);
 
   & .content {
+
     @apply --wrapper;
   }
 }

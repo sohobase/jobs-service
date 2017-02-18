@@ -10,6 +10,7 @@ const JobListItem = (props = {}) => {
     category,
     createdAt = (new Date()),
     company,
+    companyAbout,
     companyImage,
     position,
   } = props;
@@ -22,11 +23,14 @@ const JobListItem = (props = {}) => {
       <li className={classes}>
         { isNew && <abbr className={style.new}>NEW</abbr> }
         { companyImage && <img src={companyImage} alt={company} className={style.image} /> }
-        <div className={style.info}>
-          <small className={style.company}>{company}</small>
-          <strong className={style.position}>{position}</strong>
+        <div className={style.top}>
+          <small className={style.category}>
+            <Link to=''>{category}</Link> - {company}
+          </small>
+          <small className={style.date}>{ProviderDate.ago(createdAt)}</small>
         </div>
-        <small className={style.date}>{ProviderDate.ago(createdAt)}</small>
+        <strong className={style.position}>{position}</strong>
+        <small className={style.about}>{companyAbout}</small>
       </li>
     </Link>
   );
@@ -35,6 +39,7 @@ const JobListItem = (props = {}) => {
 JobListItem.propTypes = {
   category: PropTypes.string,
   company: PropTypes.string,
+  companyAbout: PropTypes.string,
   companyImage: PropTypes.string,
   id: PropTypes.string,
   position: PropTypes.string,

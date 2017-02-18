@@ -11,7 +11,6 @@ export default () => (
       </Link>
       <nav className={style.navigation}>
         <Link to="/help">Ask us anything</Link>
-        <Link to="/job/1234">Example Job</Link>
         <Button caption="Post new offer" accent />
       </nav>
     </div>

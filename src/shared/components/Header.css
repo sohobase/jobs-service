@@ -4,9 +4,12 @@
 
 :root {
   --header-brand-height: calc(var(--unit) * 2.4);
+  --header-background: white;
 }
 
 .header {
+  background-color: var(--header-background);
+
   &,
   & .wrapper {
     height: var(--header-height);
