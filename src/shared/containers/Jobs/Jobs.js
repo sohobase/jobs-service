@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { JobListItem } from '../../components';
+import { Box, Button, JobListItem } from '../../components';
 import style from './Jobs.css';
 
 export default class Jobs extends Component {
@@ -19,6 +19,7 @@ export default class Jobs extends Component {
 
   render() {
     const { dataSource } = this.state;
+
     return (
       <div className={style.jobs}>
         <ul className={style.list}>
@@ -26,9 +27,13 @@ export default class Jobs extends Component {
         </ul>
 
         <aside>
-          <div className={style.box}>
-            <p>We have a growing community of 200,000 designers, developers and technology professionals using Panda to keep them up to date. It’s a place where companies and talent connect.</p>
-          </div>
+          <Box
+            title="WHy Remoto works?"
+            text="We have a growing community of 200,000 designers, developers and technology professionals using Panda to keep them up to date. It’s a place where companies and talent connect."
+          >
+            <Button caption="Post a job starting at 200$" className={style.button} accent />
+          </Box>
+
           <div className={style.box} />
         </aside>
       </div>

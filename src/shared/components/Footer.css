@@ -8,6 +8,7 @@
 
 .footer {
   padding: var(--footer-offset);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-tiny);
+  color: var(--color-text-secondary);
   text-align: center;
 }

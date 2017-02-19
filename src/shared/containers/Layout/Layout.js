@@ -4,8 +4,9 @@ import style from './Layout.css';
 
 const Layout = ({ children, location: { pathname } }) => (
   <article className={style.layout}>
-    <Header />
-    { pathname === '/' && <Landing /> }
+    <Header>
+      { pathname === '/' && <Landing /> }
+    </Header>
     <section className={style.content}>
       {children}
     </section>

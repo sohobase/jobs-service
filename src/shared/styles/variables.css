@@ -2,16 +2,17 @@
 
 :root {
   --unit: 1rem;
-  --offset: calc(var(--unit) * 1.6);
+  --offset: calc(var(--unit) * 2);
   --offset-phone: calc(var(--unit) * 1);
 
   /* SIZES */
-  --header-height: calc(var(--unit) * 5.6);
+  --header-height: calc(var(--unit) * 11.2);
   --aside-width: calc(var(--unit) * 29.3);
   --avatar-size: calc(var(--unit) * 3.2);
   --content-max-width: calc(var(--unit) * 102.4);
 
   /* SHADOWS */
+  --shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   --shadow-strong: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
   --shadow-light: 0 1px 0 rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1);
   --shadow-deep: 0 1px 8px rgba(0, 0, 0, 0.1);
@@ -45,6 +46,7 @@
 
   --aside: {
     margin-left: var(--offset);
+    min-width: var(--aside-width);
     width: var(--aside-width);
 
     & > *:not(:last-child) {
@@ -56,7 +58,15 @@
     width: 100%;
     background-color: white;
     box-sizing: border-box;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow);
+  }
+
+  --avatar: {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    box-shadow: var(--shadow);
+    border-radius: calc(var(--unit) * 0.2);
+    background-color: var(--color-divider);
   }
 }
 

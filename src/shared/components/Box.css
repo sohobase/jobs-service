@@ -1,0 +1,21 @@
+@import "../styles/colors.css";
+@import "../styles/fonts.css";
+@import "../styles/variables.css";
+
+.box {
+  color: var(--color-text);
+
+  @apply --box;
+
+  & .title {
+    padding: calc(var(--offset) / 1) var(--offset);
+    border-bottom: solid 1px var(--color-divider);
+    font-size: var(--font-size-normal);
+    font-weight: var(--font-weight-regular);
+  }
+
+  & .text {
+    padding: var(--offset);
+    font-size: var(--font-size-small);
+  }
+}

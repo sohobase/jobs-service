@@ -3,28 +3,26 @@
 @import "../styles/variables.css";
 
 :root {
-  --item-offset: calc(var(--offset) * 1.5);
-  --item-background: var(--color-background-body);
-  --item-background-hover: color(var(--item-background) blackness(5%));
+  --item-background-hover: color(white blackness(2.5%));
   --item-label-font-size: calc(var(--font-size-tiny) * 0.85);
   --item-label-offset: calc(var(--unit) * 0.25) calc(var(--unit) * 0.25);
-  --item-image-size: calc(var(--unit) * 4.8);
 }
 
 .joblistitem {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: var(--item-offset);
+  padding: var(--offset);
   color: var(--color-text);
+  cursor: pointer;
   border-bottom: solid 1px var(--color-divider);
 
   @apply --box;
 
   /* -- children */
   & .new {
+    display: none;
     position: absolute;
-    display: block;
     top: var(--offset);
     left: calc(var(--offset) * -0.5);
     padding: var(--item-label-offset);
@@ -35,19 +33,27 @@
   }
 
   & .image {
-    display: none;
-    width: var(--item-image-size);
-    height: var(--item-image-size);
-    background-color: var(--color-divider);
+    position: absolute;
+    left: calc((var(--offset) * -1));
+
+    @apply --avatar;
   }
 
   & .top {
-    color: var(--color-text-secondary);
     text-transform: uppercase;
     display: flex;
 
     & .category {
+      color: var(--color-text-secondary);
+
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+
+    & .company {
       flex-grow: 1;
+      margin: 0 var(--offset);
     }
   }
 
@@ -62,8 +68,16 @@
     text-overflow: ellipsis;
   }
 
+  & .top,
+  & .about {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-small);
+  }
+
   /* -- behaviors */
   &:hover {
+    background-color: var(--item-background-hover);
+
     & .position {
       color: var(--color-accent);
     }

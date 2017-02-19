@@ -3,21 +3,19 @@
 @import "../styles/variables.css";
 
 :root {
-  --header-brand-height: calc(var(--unit) * 2.4);
+  --header-brand-height: calc(var(--header-height) / 4);
   --header-background: white;
 }
 
 .header {
   background-color: var(--header-background);
-
-  &,
-  & .wrapper {
-    height: var(--header-height);
-  }
+  border-bottom: solid 1px var(--color-divider);
+  min-height: var(--header-height);
 
   & .wrapper {
     display: flex;
     align-items: center;
+    height: var(--header-height);
 
     @apply --wrapper;
   }

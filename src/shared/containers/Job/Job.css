@@ -4,67 +4,82 @@
 
 :root {
   --job-divider: 0 1px var(--color-divider);
-  --job-header-offset: var(--offset) var(--offset) calc(var(--offset) * 2) var(--offset);
   --job-content-side-width: calc(var(--unit) * 128);
 }
 
 .job {
+  display: flex;
+  margin-top: var(--offset);
 
-  & .header {
-    display: flex;
-    flex-direction: column;
-    padding: var(--job-header-offset);
-    box-shadow: var(--job-divider);
+  & .box {
+    @apply --box;
+  }
 
-    & .title {
-
-    }
-
-    & .date {
-      margin-bottom: var(--offset);
-    }
+  & .aside {
+    @apply --aside;
   }
 
   & .content {
-    display: flex;
+    line-height: 1.5;
 
-    & .text {
-      padding: var(--offset);
+    & > * {
+      display: block;
+    }
+  }
 
-      & * {
-        font-size: var(--font-size-normal);
-      }
+  & .header {
+    padding: var(--offset);
+    box-shadow: var(--job-divider);
 
-      & h1, & h2, & h3, & h4, & h5 {
-        font-size: var(--font-size-large);
-        line-height: var(--font-size-large);
-        font-weight: var(--font-weight-bold);
-        padding: var(--unit) 0;
-      }
-
-      & p {
-        margin-bottom: var(--offset);
-      }
+    & .date {
+      text-transform: uppercase;
+      font-size: var(--font-size-small);
+      color: var(--color-text-secondary);
     }
 
-    & .side {
-      margin-top: var(--offset);
-      margin-left: var(--offset);
-      width: var(--job-content-side-width);
+    & .position {
+      font-size: calc(var(--unit) * 3.2);
+      margin: calc(var(--offset) / 2) 0;
+    }
 
-      & .social {
-        display: flex;
-        flex-direction: column;
-        font-size: var(--font-size-small);
+    & .company {
+      position: relative;
+      font-size: calc(var(--unit) * 2.4);
+      margin-bottom: var(--offset);
 
-        & > * {
-          padding: var(--unit);
+      & .image {
+        position: absolute;
+        left: calc((var(--offset) * -1) - (var(--avatar-size) / 1.5));
 
-          &:not(:last-child) {
-            box-shadow: var(--job-divider);
-          }
-        }
+        @apply --avatar;
       }
+
+      & .name {
+        color: var(--color-text);
+      }
+    }
+  }
+
+  & .text {
+    padding: var(--offset);
+
+    & * {
+      font-size: var(--font-size-normal);
+    }
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5 {
+      font-size: var(--font-size-large);
+      line-height: var(--font-size-large);
+      font-weight: var(--font-weight-bold);
+      padding: var(--unit) 0;
+    }
+
+    & p {
+      margin-bottom: var(--offset);
     }
   }
 }

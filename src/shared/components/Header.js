@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import Button from './Button';
 import style from './Header.css';
 
-export default () => (
+export default ({ children }) => (
   <header className={style.header}>
     <div className={style.wrapper}>
       <Link to="/">
@@ -14,5 +14,6 @@ export default () => (
         <Button caption="Post new offer" accent />
       </nav>
     </div>
+    { children }
   </header>
 );

@@ -4,8 +4,9 @@
 
 :root {
   --button-height: calc(3.6 * var(--unit));
+  --button-height-large: calc(5.4 * var(--unit));
   --button-offset: 0 var(--offset);
-  --button-radius: calc(var(--button-height) / 2);
+  --button-radius: var(--button-height);
 }
 
 .button {
@@ -14,10 +15,7 @@
   border: none;
   outline: 0;
   padding: var(--button-offset);
-  height: var(--button-height);
-  font-size: var(--font-size-normal);
-  font-weight: var(--font-weight-semi-bold);
-  line-height: var(--button-height);
+  font-weight: var(--font-weight-regular);
   border-radius: var(--button-radius);
 
   &.accent {
@@ -32,5 +30,18 @@
 
   &:not(.accent) {
     background-color: var(--color-primary);
+  }
+
+  &.large {
+    width: 100%;
+    height: var(--button-height-large);
+    font-size: var(--font-size-large);
+    line-height: var(--button-height-large);
+  }
+
+  &:not(.large) {
+    height: var(--button-height);
+    font-size: var(--font-size-normal);
+    line-height: var(--button-height);
   }
 }
