@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import React, { Component, PropTypes } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router';
+import StripeCheckout from 'react-stripe-checkout';
 import ProviderDate from '../../providers/ProviderDate';
 import { Box, Button } from '../../components';
 import style from './Job.css';
@@ -11,6 +12,7 @@ export default class Job extends Component {
 
   static propTypes = {
     dataSource: PropTypes.object,
+    location: PropTypes.object,
     store: PropTypes.object,
   }
 
@@ -22,7 +24,6 @@ export default class Job extends Component {
     };
   }
 
-  // -- Events
   onClickButtonApply = () => {
     const { dataSource = {} } = this.state;
 
@@ -35,8 +36,28 @@ export default class Job extends Component {
       },
     })
     .then(response => response.json())
-    .then((json) => {
+    .then(() => {
       window.location = dataSource.url;
+    });
+  }
+
+  onToken = (token) => {
+    const data = {
+      token: token.id,
+      email: token.email,
+    };
+
+    fetch('/api/createCharge', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => {
+      response.json().then((result) => {
+        alert(`We are in business, ${result}`);
+      });
     });
   }
 
@@ -52,6 +73,7 @@ export default class Job extends Component {
       remote,
       text,
     } = this.state.dataSource;
+    const { location: route } = this.props;
 
     return (
       <section className={style.job}>
@@ -76,13 +98,25 @@ export default class Job extends Component {
         </div>
 
         <aside className={style.aside}>
-          <Button
-            caption="Apply"
-            large
-            accent
-            onClick={this.onClickButtonApply}
-            className={style.button}
-          />
+          { route.pathname === '/offer/preview'
+            ? <StripeCheckout
+              allowRememberMe={false}
+              amount={20000}
+              currency="USD"
+              image="/static/img/logo2.png"
+              token={this.onToken}
+              stripeKey={'pk_test_YYW5M78kfafaamwkUWFOQtml'}
+            >
+              <Button caption="Pay" large accent />
+            </StripeCheckout>
+            : <Button
+              caption="Apply"
+              large
+              accent
+              onClick={this.onClickButtonApply}
+              className={style.button}
+            />
+          }
           <Box>
             <nav>
               <a href="/">Tell a friend</a>
