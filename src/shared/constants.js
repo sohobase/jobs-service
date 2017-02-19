@@ -17,4 +17,9 @@ export default {
     business_management: 'business management',
     other: 'other',
   },
+
+  stripe: {
+    test_publishable_key: 'pk_test_YYW5M78kfafaamwkUWFOQtml',
+    live_publishable_key: 'pk_live_fLoMQV2Aap4BjkNku8NtHbA9',
+  },
 };

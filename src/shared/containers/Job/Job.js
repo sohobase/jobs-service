@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router';
 import StripeCheckout from 'react-stripe-checkout';
+import C from '../../constants';
 import ProviderDate from '../../providers/ProviderDate';
 import { Box, Button } from '../../components';
 import style from './Job.css';
@@ -74,6 +75,9 @@ export default class Job extends Component {
       text,
     } = this.state.dataSource;
     const { location: route } = this.props;
+    const stripePublicKey = process.env.NODE_ENV === C.environment.production
+      ? C.stripe.live_publishable_key
+      : C.stripe.test_publishable_key;
 
     return (
       <section className={style.job}>
@@ -105,7 +109,7 @@ export default class Job extends Component {
               currency="USD"
               image="/static/img/logo2.png"
               token={this.onToken}
-              stripeKey={'pk_test_YYW5M78kfafaamwkUWFOQtml'}
+              stripeKey={stripePublicKey}
             >
               <Button caption="Pay" large accent />
             </StripeCheckout>
