@@ -24,8 +24,8 @@ const JobListItem = (props = {}) => {
         { isNew && <abbr className={style.new}>NEW</abbr> }
         <div className={style.top}>
           { companyImage && <img src={companyImage} alt={company} className={style.image} /> }
-          { category && <Link to={`/jobs/${category}`} className={style.category}>{category}</Link> }
           <span className={style.company}>{company}</span>
+          { category && <Link to={`/jobs/${category}`} className={style.category}>{category}</Link> }
           <span>{ProviderDate.ago(createdAt)}</span>
         </div>
         <strong className={style.position}>{position}</strong>

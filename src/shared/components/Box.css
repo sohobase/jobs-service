@@ -17,5 +17,9 @@
   & .text {
     padding: var(--offset);
     font-size: var(--font-size-small);
+
+    & ~ .text {
+      padding-top: 0;
+    }
   }
 }

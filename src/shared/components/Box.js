@@ -5,7 +5,6 @@ import style from './Box.css';
 const Box = ({ className, children, title, text }) => {
   const classes = classnames(style.box, className);
 
-  console.log('>>>>', children)
   return (
     <div className={classes}>
       { title && <h6 className={style.title}>{title}</h6> }

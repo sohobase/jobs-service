@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import Button from './Button';
 import style from './Header.css';
 
-export default ({ children }) => (
+const Header = ({ children }) => (
   <header className={style.header}>
     <div className={style.wrapper}>
       <Link to="/">
@@ -17,3 +17,9 @@ export default ({ children }) => (
     { children }
   </header>
 );
+
+Header.propTypes = {
+  children: PropTypes.node,
+};
+
+export default Header;

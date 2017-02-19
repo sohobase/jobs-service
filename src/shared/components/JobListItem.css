@@ -45,6 +45,8 @@
 
     & .category {
       color: var(--color-text-secondary);
+      margin: 0 var(--offset);
+      flex-grow: 1;
 
       &:hover {
         color: var(--color-accent);
@@ -52,8 +54,6 @@
     }
 
     & .company {
-      flex-grow: 1;
-      margin: 0 var(--offset);
     }
   }
 
