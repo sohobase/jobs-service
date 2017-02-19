@@ -13,6 +13,5 @@ export default {
     console.log('✅');
   },
   runOnInit: false,
-  start: true,
   timeZone: 'America/Los_Angeles',
 };
