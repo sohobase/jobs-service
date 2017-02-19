@@ -1,6 +1,7 @@
 import https from 'https';
 import { ServiceTelegram } from '../services';
 import { Offer } from '../models';
+import toMarkdown from './modules/toMarkdown';
 
 const callback = (response) => {
   let str = '';
@@ -24,7 +25,7 @@ const callback = (response) => {
 
           company,
 
-          text: description,
+          text: toMarkdown(description),
           state: 'imported',
           skills: tags,
 

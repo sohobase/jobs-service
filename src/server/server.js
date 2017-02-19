@@ -6,7 +6,6 @@ import { api, router, webhookStripe } from './routes';
 import { ServiceTelegram } from './services';
 
 const { port = 3000, NODE_ENV = C.environment.development } = process.env;
-const isProduction = NODE_ENV === C.environment.production;
 const app = Express();
 
 // -- Setup
@@ -19,7 +18,7 @@ app.use(Webpack);
 app.use(BodyParser.urlencoded());
 app.use(BodyParser.json());
 
-if (isProduction) {
+if (NODE_ENV === C.environment.production) {
   app.use(Stats);
 } else {
   app.use(Log);
@@ -33,11 +32,7 @@ app.use(router);
 
 // -- Start Server
 app.listen(port, (error) => {
-  if (error) {
-    ServiceTelegram(error);
-    return console.error(error); // eslint-disable-line no-console
-  }
+  if (error) ServiceTelegram(error);
 
-  const message = `Server running on http://localhost:${port} [${NODE_ENV}]`;
-  return isProduction ? ServiceTelegram(message) : console.log(message);
+  ServiceTelegram(`Server running on http://localhost:${port} [${NODE_ENV}]`);
 });

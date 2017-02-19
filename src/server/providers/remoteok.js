@@ -2,6 +2,7 @@ import Chrono from 'chrono-node';
 import Xray from 'x-ray';
 import { Offer } from '../models';
 import { ServiceTelegram } from '../services';
+import toMarkdown from './modules/toMarkdown';
 
 const x = Xray({
   filters: {
@@ -15,6 +16,10 @@ const x = Xray({
 
     format(value) {
       return value.replace(/(\t|\n|\r)/gm, '');
+    },
+
+    markdown(value) {
+      return toMarkdown(value);
     },
   },
 });
@@ -32,7 +37,7 @@ const schema = {
   page: x('a@href', {
     companyUrl: '.description:first-child a:nth-child(2)@href',
     location: '[itemprop="jobLocation"] | format',
-    text: '.description div p@text | format',
+    text: '.description div p@text | markdown',
   }),
 };
 

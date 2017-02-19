@@ -76,10 +76,18 @@
       line-height: var(--font-size-large);
       font-weight: var(--font-weight-bold);
       padding: var(--unit) 0;
+      background-color: red;
     }
 
     & p {
-      margin-bottom: var(--offset);
+      &:not(:first-child) {
+        margin-top: var(--offset);
+      }
+    }
+
+    & ul,
+    & ol {
+      padding: calc(var(--offset) / 2) var(--offset);
     }
   }
 }

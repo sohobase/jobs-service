@@ -1,5 +1,7 @@
 import classnames from 'classnames';
+// import { markdown } from 'markdown';
 import React, { Component, PropTypes } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router';
 import ProviderDate from '../../providers/ProviderDate';
 import { Box, Button } from '../../components';
@@ -69,7 +71,7 @@ export default class Job extends Component {
             </div>
           </header>
           <div className={classnames(style.content, style.text)}>
-            {text}
+            <ReactMarkdown source={text} />
           </div>
         </div>
 

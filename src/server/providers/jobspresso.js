@@ -1,9 +1,8 @@
-// https://jobspresso.co/
-
 import Chrono from 'chrono-node';
 import Xray from 'x-ray';
 import { Offer } from '../models';
 import { ServiceTelegram } from '../services';
+import toMarkdown from './modules/toMarkdown';
 
 const x = Xray({
   filters: {
@@ -27,6 +26,10 @@ const x = Xray({
     location(value) {
       return value.replace(/(\t|\n|\r)/gm, '');
     },
+
+    markdown(value) {
+      return toMarkdown(value);
+    },
   },
 });
 
@@ -39,9 +42,9 @@ const schema = {
     category: '.job-type | category',
     createdAt: '.date-posted date | date',
     companyUrl: '.job-company a@href',
-    companyAbout: '.job-company-about | about',
+    companyAbout: '.job-company-about@html | about | markdown',
     companyImage: '.company_logo@src',
-    text: '.job-overview .section',
+    text: '.job-overview .section@html | markdown',
     url: '.job_manager_contact_details_inner a@href',
   }),
 };

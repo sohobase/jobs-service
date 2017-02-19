@@ -3,6 +3,7 @@ import Xray from 'x-ray';
 import { Offer } from '../models';
 import { ServiceTelegram } from '../services';
 import valueBetween from './modules/valueBetween';
+import toMarkdown from './modules/toMarkdown';
 
 const x = Xray({
   filters: {
@@ -23,6 +24,10 @@ const x = Xray({
     createdAt(value) {
       return Chrono.parseDate(value);
     },
+
+    markdown(value) {
+      return toMarkdown(value);
+    },
   },
 });
 
@@ -37,7 +42,7 @@ const schema = {
     url: '.apply a@href',
     companyUrl: '.listing-header-container h2 a@href',
     companyImage: '.listing-logo img@src',
-    text: '.listing-container',
+    text: '.listing-container | markdown',
   }),
 };
 

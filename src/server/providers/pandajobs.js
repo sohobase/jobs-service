@@ -1,8 +1,7 @@
-// https://panda.jobs/
-
 import http from 'http';
 import { ServiceTelegram } from '../services';
 import { Offer } from '../models';
+import toMarkdown from './modules/toMarkdown';
 
 const handleRequest = (response) => {
   let str = '';
@@ -37,10 +36,10 @@ const handleRequest = (response) => {
 
           company: company.title,
           companyUrl: company.links.web,
-          companyAbout: company.description,
+          companyAbout: toMarkdown(company.description),
           companyImage: company.logo,
 
-          text: description,
+          text: toMarkdown(description),
           salary,
           state: 'imported',
           skills,
