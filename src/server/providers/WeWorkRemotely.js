@@ -8,7 +8,8 @@ const x = Xray({
   filters: {
 
     category(value) {
-      return valueBetween(value, 'See more ', ' jobs').toLowerCase();
+      const between = valueBetween(value, 'See more ', ' jobs');
+      return between ? between.toLowerCase() : undefined;
     },
 
     id(value) {
@@ -40,26 +41,28 @@ const schema = {
   }),
 };
 
-x('https://weworkremotely.com/', '.jobs li', [schema])((error, values = []) => {
-  ServiceTelegram(`⚙️ /cron/weworkremotely : ${error ? ("🚨" + error) : "🏁"}`);
+export default () => {
+  x('https://weworkremotely.com/', '.jobs li', [schema])((error, values = []) => {
+    ServiceTelegram(`⚙️ #cron #weworkremotely ${error || ''}`);
 
-  values.forEach(({ id, position, company, createdAt, page = {} }) => {
-    Offer.consolidate('weworkremotely', id, {
-      category: page.category,
-      position,
-      url: page.url,
-      // remote,
-      location: page.location,
+    values.forEach(({ id, position, company, createdAt, page = {} }) => {
+      Offer.consolidate('weworkremotely', id, {
+        category: page.category,
+        position,
+        url: page.url,
+        // remote,
+        location: page.location,
 
-      company,
-      companyUrl: page.companyUrl,
-      // companyAbout:,
-      companyImage: page.companyImage,
+        company,
+        companyUrl: page.companyUrl,
+        // companyAbout:,
+        companyImage: page.companyImage,
 
-      text: page.text,
-      state: 'ready',
-      // highlight: false,
-      createdAt,
+        text: page.text,
+        state: 'ready',
+        // highlight: false,
+        createdAt,
+      });
     });
   });
-});
+};

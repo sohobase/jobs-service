@@ -36,28 +36,31 @@ const schema = {
   }),
 };
 
-x('https://remoteok.io/', '.job', [schema])((error, values = []) => {
-  ServiceTelegram(`⚙️ /cron/remoteok : ${error ? ("🚨" + error) : "🏁"}`);
-  values.forEach(({ id, position, featured, company, companyImage, url, createdAt, page, skills }) => {
-    if (id) {
-      Offer.consolidate('remoteok', id, {
-        // category,
-        position,
-        url,
-        remote: page.location === 'Remote',
-        location: page.location,
-        company,
-        companyUrl: page.companyUrl,
-        // companyAbout
-        companyImage,
+export default () => {
+  x('https://remoteok.io/', '.job', [schema])((error, values = []) => {
+    ServiceTelegram(`⚙️ #cron #remoteok ${error || ''}`);
 
-        text: page.text,
-        // salary
-        skills,
-        state: 'ready',
-        highlight: featured.length > 0,
-        createdAt,
-      });
-    }
+    values.forEach(({ id, position, featured, company, companyImage, url, createdAt, page, skills }) => {
+      if (id) {
+        Offer.consolidate('remoteok', id, {
+          // category,
+          position,
+          url,
+          remote: page.location === 'Remote',
+          location: page.location,
+          company,
+          companyUrl: page.companyUrl,
+          // companyAbout
+          companyImage,
+
+          text: page.text,
+          // salary
+          skills,
+          state: 'ready',
+          highlight: featured.length > 0,
+          createdAt,
+        });
+      }
+    });
   });
-});
+};

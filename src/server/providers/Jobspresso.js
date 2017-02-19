@@ -44,28 +44,30 @@ const schema = {
   }),
 };
 
-x('https://jobspresso.co/', '.job_listings li', [schema])((error, values = []) => {
-  ServiceTelegram(`⚙️ /cron/jobespresso : ${error ? ("🚨" + error) : "🏁"}`);
+export default () => {
+  x('https://jobspresso.co/', '.job_listings li', [schema])((error, values = []) => {
+    ServiceTelegram(`⚙️ #cron #jobespresso ${error || ''}`);
 
-  values.forEach(({ id, position, company, location, page }) => {
-    if (id) {
-      Offer.consolidate('jobspresso', id, {
-        category: page.category,
-        position,
-        url: page.url,
-        remote: location === 'Anywhere',
-        location,
+    values.forEach(({ id, position, company, location, page }) => {
+      if (id) {
+        Offer.consolidate('jobspresso', id, {
+          category: page.category,
+          position,
+          url: page.url,
+          remote: location === 'Anywhere',
+          location,
 
-        company,
-        companyUrl: page.companyUrl,
-        companyAbout: page.companyAbout,
-        companyImage: page.companyImage,
+          company,
+          companyUrl: page.companyUrl,
+          companyAbout: page.companyAbout,
+          companyImage: page.companyImage,
 
-        text: page.text,
-        state: 'ready',
-        // highlight: false,
-        createdAt: page.createdAt,
-      });
-    }
+          text: page.text,
+          state: 'ready',
+          // highlight: false,
+          createdAt: page.createdAt,
+        });
+      }
+    });
   });
-});
+};

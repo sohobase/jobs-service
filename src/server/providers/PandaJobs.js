@@ -2,7 +2,7 @@ import http from 'http';
 import { ServiceTelegram } from '../services';
 import { Offer } from '../models';
 
-const callback = (response) => {
+const handleRequest = (response) => {
   let str = '';
 
   response.on('data', (chunk) => {
@@ -46,11 +46,13 @@ const callback = (response) => {
         });
       }
     });
-    ServiceTelegram('⚙️ /cron/pandajobs : 🏁');
+    ServiceTelegram('⚙️ #cron #pandajobs');
   });
 };
 
-http
-  .request('http://api.pnd.gs/v1/jobs?limit=20&page=1', callback)
-  .on('error', error => ServiceTelegram(`⚙️ /cron/pandajobs : 🚨 (${error})`))
-  .end();
+export default () => {
+  http
+    .request('http://api.pnd.gs/v1/jobs?limit=20&page=1', handleRequest)
+    .on('error', error => ServiceTelegram(`⚙️ #cron #pandajobs ${error}`))
+    .end();
+};

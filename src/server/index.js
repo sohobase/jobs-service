@@ -8,6 +8,4 @@ hook({
 });
 
 require('./server');
-// require('./crons/example');
-// require('./providers/Jobspresso');
-// require('./providers/WeWorkRemotely');
+require('./crons');
