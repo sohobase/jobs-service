@@ -1,6 +1,6 @@
 {
   "name": "remoto",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A new way for get your next remote job",
   "private": true,
   "repository": {
@@ -55,6 +55,7 @@
   "dependencies": {
     "babel-jest": "^18.0.0",
     "babel-register": "^6.23.0",
+    "body-parser": "^1.16.1",
     "chrono-node": "^1.2.5",
     "classnames": "^2.2.5",
     "cron": "^1.2.1",

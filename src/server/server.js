@@ -1,4 +1,5 @@
 import Express from 'express';
+import BodyParser from 'body-parser';
 import C from '../shared/constants';
 import { Error, HotReload, Log, Session, Stats, Webpack } from './middlewares';
 import { api, router, webhookStripe } from './routes';
@@ -15,6 +16,9 @@ app.set('view engine', 'ejs');
 app.use(Session);
 app.use(Error);
 app.use(Webpack);
+app.use(BodyParser.urlencoded());
+app.use(BodyParser.json());
+
 if (isProduction) {
   app.use(Stats);
 } else {
