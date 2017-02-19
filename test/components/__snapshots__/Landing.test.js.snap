@@ -3,10 +3,6 @@ exports[`<Landing /> renders by default 1`] = `
   className="landing">
   <div
     className="wrapper">
-    <p
-      className="slogan">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </p>
     <input
       type="search" />
   </div>

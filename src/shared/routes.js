@@ -4,7 +4,6 @@ import Layout from './containers/Layout';
 import Jobs from './containers/Jobs';
 import Job from './containers/Job';
 import Offer from './containers/Offer';
-import Purchase from './containers/Purchase';
 import NotFoundPage from './components/NotFoundPage';
 
 const routes = (
