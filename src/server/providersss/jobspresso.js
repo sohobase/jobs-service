@@ -1,3 +1,5 @@
+// https://jobspresso.co/
+
 import Chrono from 'chrono-node';
 import Xray from 'x-ray';
 import { Offer } from '../models';
