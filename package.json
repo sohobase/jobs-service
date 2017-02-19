@@ -72,6 +72,8 @@
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-router": "^3.0.2",
+    "react-stripe-checkout": "^2.2.5",
+    "stripe": "^4.15.0",
     "telebot": "^1.0.7",
     "uuid": "^3.0.1",
     "x-ray": "^2.3.1"

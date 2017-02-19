@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { Offer } from '../models';
+import createCharge from '../services/createCharge';
 
 const router = new Router();
 
@@ -47,9 +48,17 @@ router.get('/session', (req, res) => {
 
 router.post('/offer', (req, res) => {
   const { session } = req;
-
   session.offer = req.body;
   res.redirect('../offer/preview');
+});
+
+router.post('/createCharge', (req, res) => {
+  const formData = req.body;
+  const { offer } = req.session;
+  // TODO offer is null
+  createCharge(formData.token, offer).then((result) => {
+    res.json({ result: { id: result.id } });
+  });
 });
 
 export default router;

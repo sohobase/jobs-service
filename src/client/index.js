@@ -2,7 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import App from './App';
 
-const store = JSON.parse(document.getElementById('store').innerHTML);
+let store;
+try {
+  store = JSON.parse(document.getElementById('store').innerHTML);
+} catch (e) {
+  console.log(e);
+}
 
 window.onload = () => {
   render(<App store={store} />, document.getElementById('remoto'));
