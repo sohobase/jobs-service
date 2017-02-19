@@ -1,0 +1,17 @@
+@import "../../styles/reset.css";
+@import "../../styles/variables.css";
+
+.offer {
+  display: flex;
+  margin-top: var(--offset);
+
+  & .form {
+    padding: var(--offset);
+
+    @apply --box;
+  }
+
+  & .aside {
+    @apply --aside;
+  }
+}

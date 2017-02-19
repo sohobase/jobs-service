@@ -46,10 +46,9 @@ router.get('/session', (req, res) => {
 });
 
 router.post('/offer', (req, res) => {
-  const formData = req.body;
   const { session } = req;
 
-  session.offer = formData;
+  session.offer = req.body;
   res.redirect('../offer/preview');
 });
 
