@@ -46,4 +46,12 @@ router.get('/session', (req, res) => {
   res.json({ session });
 });
 
+router.post('/offer', (req, res) => {
+  const formData = req.body;
+  const { session } = req;
+
+  session.offer = formData;
+  res.redirect('../offer/preview');
+});
+
 export default router;
