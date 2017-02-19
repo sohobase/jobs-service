@@ -9,7 +9,7 @@ router.get('/job/:id', (req, res) => {
 
   if (!offer) return res.status(404).json({ error: 'Not Found' });
 
-  delete offer.url;
+  // delete offer.url;
   return res.json(offer);
 });
 
@@ -18,7 +18,7 @@ router.get('/job/:id/redirect', (req, res) => {
   const { id } = req.params;
   const offer = Offer.find({ query: { id, state: 'ready' } });
 
-  return res.json({ url: offer ? offer.url : undefined });
+  return res.json({ url: (offer && offer.url) ? offer.url : undefined });
 });
 
 

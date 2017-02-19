@@ -8,8 +8,8 @@ import style from './Job.css';
 export default class Job extends Component {
 
   static propTypes = {
-    dataSource: PropTypes.arrayOf(PropTypes.object),
-    store: PropTypes.arrayOf(PropTypes.object),
+    dataSource: PropTypes.object,
+    store: PropTypes.object,
   }
 
   constructor(props) {
@@ -18,6 +18,24 @@ export default class Job extends Component {
     this.state = {
       dataSource: dataSource || store || [],
     };
+  }
+
+  // -- Events
+  onClickButtonApply = () => {
+    const { dataSource = {} } = this.state;
+
+    fetch(`/api/job/${dataSource.id}/redirect`, {
+      method: 'GET',
+      // body: "{a:'a'}",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => response.json())
+    .then((json) => {
+      window.location = dataSource.url;
+    });
   }
 
   render() {
@@ -56,7 +74,13 @@ export default class Job extends Component {
         </div>
 
         <aside className={style.aside}>
-          <Button caption="Apply" large accent />
+          <Button
+            caption="Apply"
+            large
+            accent
+            onClick={this.onClickButtonApply}
+            className={style.button}
+          />
           <Box>
             <nav>
               <a href="/">Tell a friend</a>

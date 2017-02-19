@@ -39,14 +39,13 @@
     @apply --avatar;
   }
 
-  & .top {
+  & .header {
     text-transform: uppercase;
     display: flex;
 
     & .category {
       color: var(--color-text-secondary);
       margin: 0 var(--offset);
-      flex-grow: 1;
 
       &:hover {
         color: var(--color-accent);
@@ -54,6 +53,10 @@
     }
 
     & .company {
+    }
+
+    & .date {
+      flex-grow: 1;
     }
   }
 
@@ -68,7 +71,7 @@
     text-overflow: ellipsis;
   }
 
-  & .top,
+  & .header,
   & .about {
     color: var(--color-text-secondary);
     font-size: var(--font-size-small);

@@ -22,14 +22,14 @@ const JobListItem = (props = {}) => {
     <Link to={`/job/${id}`}>
       <li className={classes}>
         { isNew && <abbr className={style.new}>NEW</abbr> }
-        <div className={style.top}>
+        <div className={style.header}>
           { companyImage && <img src={companyImage} alt={company} className={style.image} /> }
           <span className={style.company}>{company}</span>
           { category && <Link to={`/jobs/${category}`} className={style.category}>{category}</Link> }
-          <span>{ProviderDate.ago(createdAt)}</span>
+          <span className={style.date}>{ProviderDate.ago(createdAt)}</span>
         </div>
         <strong className={style.position}>{position}</strong>
-        <p className={style.about}>{companyAbout}</p>
+        { companyAbout && <p className={style.about}>{companyAbout}</p> }
       </li>
     </Link>
   );
