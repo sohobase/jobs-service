@@ -4,6 +4,7 @@
 
 .jobs {
   display: flex;
+  align-items: flex-start;
   margin: var(--offset) 0;
 
   & .list {

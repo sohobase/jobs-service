@@ -1,4 +1,4 @@
-import telegramBot from '../../services/telegramBot';
+import { ServiceTelegram } from '../../services';
 
 export default state => ({
 
@@ -9,7 +9,7 @@ export default state => ({
     if (!offerInStore) {
       const { position, url } = data;
       const message = `✅ "${position}" from #${provider} saved correctly.`;
-      telegramBot(url, { markup: url });
+      ServiceTelegram(url, { markup: url });
     }
 
     return state.update({ query, data, upsert: true });

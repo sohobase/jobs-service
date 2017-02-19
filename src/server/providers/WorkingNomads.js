@@ -1,5 +1,5 @@
 import https from 'https';
-import telegramBot from '../services/telegramBot';
+import { ServiceTelegram } from '../services';
 import { Offer } from '../models';
 
 const callback = (response) => {
@@ -33,11 +33,11 @@ const callback = (response) => {
       }
       return id;
     });
-    telegramBot('⚙️ /cron/workingnomads : 🏁');
+    ServiceTelegram('⚙️ /cron/workingnomads : 🏁');
   });
 };
 
 https
   .get('https://www.workingnomads.co/jobsapi/job/_search?sort=pub_date:desc&size=100', callback)
-  .on('error', error => telegramBot(`⚙️ /cron/workingnomads : 🚨 (${error})`))
+  .on('error', error => ServiceTelegram(`⚙️ /cron/workingnomads : 🚨 (${error})`))
   .end();

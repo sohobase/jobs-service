@@ -3,7 +3,6 @@ import { Offer } from '../models';
 
 const router = new Router();
 
-
 router.get('/job/:id', (req, res) => {
   const { id } = req.params;
   const offer = Offer.find({ query: { id, state: 'ready' } });

@@ -1,7 +1,7 @@
 import Chrono from 'chrono-node';
 import Xray from 'x-ray';
 import { Offer } from '../models';
-import telegramBot from '../services/telegramBot';
+import { ServiceTelegram } from '../services';
 import valueBetween from './modules/valueBetween';
 
 const x = Xray({
@@ -41,7 +41,7 @@ const schema = {
 };
 
 x('https://weworkremotely.com/', '.jobs li', [schema])((error, values = []) => {
-  telegramBot(`⚙️ /cron/weworkremotely : ${error ? ("🚨" + error) : "🏁"}`);
+  ServiceTelegram(`⚙️ /cron/weworkremotely : ${error ? ("🚨" + error) : "🏁"}`);
 
   values.forEach(({ id, position, company, createdAt, page = {} }) => {
     Offer.consolidate('weworkremotely', id, {

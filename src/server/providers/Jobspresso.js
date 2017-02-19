@@ -1,7 +1,7 @@
 import Chrono from 'chrono-node';
 import Xray from 'x-ray';
 import { Offer } from '../models';
-import telegramBot from '../services/telegramBot';
+import { ServiceTelegram } from '../services';
 
 const x = Xray({
   filters: {
@@ -45,7 +45,7 @@ const schema = {
 };
 
 x('https://jobspresso.co/', '.job_listings li', [schema])((error, values = []) => {
-  telegramBot(`⚙️ /cron/jobespresso : ${error ? ("🚨" + error) : "🏁"}`);
+  ServiceTelegram(`⚙️ /cron/jobespresso : ${error ? ("🚨" + error) : "🏁"}`);
 
   values.forEach(({ id, position, company, location, page }) => {
     if (id) {

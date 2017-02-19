@@ -5,7 +5,7 @@ import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import NotFoundPage from '../../shared/components/NotFoundPage';
 import routes from '../../shared/routes';
-import storeService from '../services/storeService';
+import { ServiceQuery } from '../services';
 
 const app = Express();
 const handleRequest = (req, res) => {
@@ -14,12 +14,12 @@ const handleRequest = (req, res) => {
     if (redirect) return res.redirect(302, redirect.pathname + redirect.search);
 
     let markup;
-    const store = storeService(req.originalUrl, req.params);
+    const dataSource = ServiceQuery(req);
     if (routerProps) {
       const renderProps = {
         ...routerProps,
         createElement: (Component, props) => (
-          <Component {...props} dataSource={store} />
+          <Component {...props} dataSource={dataSource} />
         ),
       };
 
@@ -29,7 +29,7 @@ const handleRequest = (req, res) => {
       res.status(404);
     }
 
-    return res.render('index', { markup, store });
+    return res.render('index', { markup, dataSource });
   });
 };
 

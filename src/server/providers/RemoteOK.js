@@ -1,7 +1,7 @@
 import Chrono from 'chrono-node';
 import Xray from 'x-ray';
 import { Offer } from '../models';
-import telegramBot from '../services/telegramBot';
+import { ServiceTelegram } from '../services';
 
 const x = Xray({
   filters: {
@@ -37,7 +37,7 @@ const schema = {
 };
 
 x('https://remoteok.io/', '.job', [schema])((error, values = []) => {
-  telegramBot(`⚙️ /cron/remoteok : ${error ? ("🚨" + error) : "🏁"}`);
+  ServiceTelegram(`⚙️ /cron/remoteok : ${error ? ("🚨" + error) : "🏁"}`);
   values.forEach(({ id, position, featured, company, companyImage, url, createdAt, page, skills }) => {
     if (id) {
       Offer.consolidate('remoteok', id, {

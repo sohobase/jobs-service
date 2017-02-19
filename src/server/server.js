@@ -2,7 +2,7 @@ import Express from 'express';
 import C from '../shared/constants';
 import { Error, HotReload, Log, Session, Stats, Webpack } from './middlewares';
 import { api, router, webhookStripe } from './routes';
-import bot from './services/telegramBot';
+import { ServiceTelegram } from './services';
 
 const { port = 3000, NODE_ENV = C.environment.development } = process.env;
 const isProduction = NODE_ENV === C.environment.production;
@@ -30,10 +30,10 @@ app.use(router);
 // -- Start Server
 app.listen(port, (error) => {
   if (error) {
-    bot(error);
+    ServiceTelegram(error);
     return console.error(error); // eslint-disable-line no-console
   }
 
   const message = `Server running on http://localhost:${port} [${NODE_ENV}]`;
-  return isProduction ? bot(message) : console.log(message);
+  return isProduction ? ServiceTelegram(message) : console.log(message);
 });
