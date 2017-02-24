@@ -15,7 +15,7 @@ export default (req) => {
     const query = { state: 'ready' };
 
     if (category) query.category = category;
-    dataSource = Offer.find({ query, limit: 32 });
+    dataSource = Offer.find({ query, sortBy: 'createdAt', limit: 32 });
   } else if (urlContext === 'offer') {
     dataSource = req.session.offer;
   }
