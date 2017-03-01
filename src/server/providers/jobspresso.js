@@ -61,16 +61,17 @@ export default () => {
           url: page.url,
           remote: location === 'Anywhere',
           location,
-
-          company,
-          companyUrl: page.companyUrl,
-          companyAbout: page.companyAbout,
-          companyImage: page.companyImage,
-
+          company: {
+            name: company,
+            url: page.companyUrl,
+            about: page.companyAbout,
+            image: page.companyImage,
+          },
           text: page.text,
+          // salary
+          // skills
           state: 'ready',
           // highlight: false,
-          createdAt: page.createdAt,
         });
       }
     });

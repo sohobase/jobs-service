@@ -3,6 +3,7 @@ export default {
 
   offer: {
     state: {
+      draft: 'draft',
       ready: 'ready',
     },
   },

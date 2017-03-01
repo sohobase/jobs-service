@@ -50,23 +50,24 @@ export default () => {
   x('https://weworkremotely.com/', '.jobs li', [schema])((error, values = []) => {
     ServiceTelegram(`⚙️ #cron #weworkremotely ${error || ''}`);
 
-    values.forEach(({ id, position, company, createdAt, page = {} }) => {
+    values.forEach(({ id, position, company, page = {} }) => {
       Offer.consolidate('weworkremotely', id, {
         category: page.category,
         position,
         url: page.url,
         // remote,
         location: page.location,
-
-        company,
-        companyUrl: page.companyUrl,
-        // companyAbout:,
-        companyImage: page.companyImage,
-
+        company: {
+          name: company,
+          url: page.companyUrl,
+          // about:
+          image: page.companyImage,
+        },
         text: page.text,
+        // salary
+        // skills
         state: 'ready',
         // highlight: false,
-        createdAt,
       });
     });
   });

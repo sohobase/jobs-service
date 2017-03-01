@@ -1,11 +1,16 @@
 require('babel-register');
 require('dotenv').config();
-
 const hook = require('css-modules-require-hook');
+const mongo = require('./services/serviceMongo').default;
 
-hook({
-  generateScopedName: '[name]_[local]_[hash:base64:5]',
-});
+mongo.connect()
+  .then((connection) => {
+    global.db = connection;
 
-require('./server');
-require('./crons');
+    hook({ generateScopedName: '[name]_[local]_[hash:base64:5]' });
+    require('./server');
+    require('./crons');
+  })
+  .catch((error) => {
+    console.log('[error]', error);
+  });

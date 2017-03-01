@@ -14,7 +14,7 @@ const callback = (response) => {
     const result = JSON.parse(str).hits.hits;
 
     result.map(({ _source }) => {
-      const { id, apply_url, category_name, company, description, location_base, pub_date, tags, title } = _source;
+      const { id, apply_url, category_name, company, description, location_base, tags, title } = _source;
       if (id) {
         Offer.consolidate('workingnomads', id, {
           category: category_name,
@@ -22,14 +22,17 @@ const callback = (response) => {
           url: apply_url,
           remote: !location_base, // eslint-disable-line camelcase
           location: location_base,
-
-          company,
-
+          company: {
+            name: company,
+            // url:
+            // about:
+            // image:
+          },
           text: toMarkdown(description),
-          state: 'imported',
+          // salary
           skills: tags,
-
-          createdAt: pub_date,
+          state: 'imported',
+          // highlight
         });
       }
       return id;
