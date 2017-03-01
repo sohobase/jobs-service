@@ -8,7 +8,7 @@ mongo.connect()
     global.db = connection;
 
     hook({ generateScopedName: '[name]_[local]_[hash:base64:5]' });
-    // require('./server');
+    require('./server');
     require('./crons');
   })
   .catch((error) => {
