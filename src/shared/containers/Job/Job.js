@@ -32,7 +32,7 @@ export default class Job extends Component {
   onClickButtonApply = () => {
     const { dataSource = {} } = this.state;
 
-    fetch(`/api/job/${dataSource.id}/redirect`, {
+    fetch(`/api/job/${dataSource._id}/redirect`, { // eslint-disable-line no-underscore-dangle
       method: 'GET',
       // body: "{a:'a'}",
       headers: {
@@ -41,8 +41,8 @@ export default class Job extends Component {
       },
     })
     .then(response => response.json())
-    .then(() => {
-      window.location = dataSource.url;
+    .then((response) => {
+      window.location = response.url;
     });
   }
 
@@ -76,7 +76,7 @@ export default class Job extends Component {
       remote,
       text,
     } = this.state.dataSource;
-    const { name, url, image } = company;
+    const { name, url, image } = company || {};
     const { location: route } = this.props;
     const stripePublicKey = NODE_ENV === PRODUCTION
       ? C.stripe.live_publishable_key
