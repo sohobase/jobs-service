@@ -1,3 +1,3 @@
-export { default as Mongo } from './serviceMongo';
-export { default as ServiceQuery } from './serviceQuery';
-export { default as ServiceTelegram } from './serviceTelegram';
+export { default as ServiceMongo } from './mongo';
+export { default as ServiceQuery } from './query';
+export { default as ServiceTelegram } from './telegram';
