@@ -6,7 +6,7 @@ import style from './JobListItem.css';
 
 const JobListItem = (props = {}) => {
   const {
-    id,
+    _id: id,
     category,
     createdAt = (new Date()),
     company,
@@ -40,7 +40,7 @@ JobListItem.propTypes = {
   company: PropTypes.string,
   companyAbout: PropTypes.string,
   companyImage: PropTypes.string,
-  id: PropTypes.string,
+  _id: PropTypes.string,
   position: PropTypes.string,
   createdAt: PropTypes.any,
 };

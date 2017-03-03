@@ -66,14 +66,13 @@ export default class Job extends Component {
     const {
       category,
       company,
-      companyImage,
-      companyUrl,
       createdAt,
       location,
       position,
       remote,
       text,
     } = this.state.dataSource;
+    const { name, url, image } = company;
     const { location: route } = this.props;
     const stripePublicKey = process.env.NODE_ENV === C.environment.production
       ? C.stripe.live_publishable_key
@@ -86,8 +85,8 @@ export default class Job extends Component {
             <span className={style.date}>{ProviderDate.ago(createdAt)}</span>
             <h1 className={style.position}>{position}</h1>
             <div className={style.company}>
-              { companyImage && <img src={companyImage} alt={company} className={style.image} /> }
-              <Link href={companyUrl} className={style.name}>{company}</Link>
+              { image && <img src={image} alt={name} className={style.image} /> }
+              <Link href={url} className={style.name}>{name}</Link>
             </div>
 
             <div className={style.content}>

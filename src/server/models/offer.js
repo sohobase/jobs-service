@@ -11,7 +11,7 @@ const OfferSchema = db.Schema(
     url: String,
     remote: { type: Boolean, index: 1 },
     location: String,
-    company: [{ type: db.Schema.Types.ObjectId, ref: 'Company' }],
+    company: { type: db.Schema.Types.ObjectId, ref: 'Company' },
     text: String,
     salary: String,
     skills: Array,

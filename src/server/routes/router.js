@@ -14,22 +14,23 @@ const handleRequest = (req, res) => {
     if (redirect) return res.redirect(302, redirect.pathname + redirect.search);
 
     let markup;
-    const dataSource = ServiceQuery(req);
-    if (routerProps) {
-      const renderProps = {
-        ...routerProps,
-        createElement: (Component, props) => (
-          <Component {...props} dataSource={dataSource} />
-        ),
-      };
+    return ServiceQuery(req).then((dataSource) => {
+      if (routerProps) {
+        const renderProps = {
+          ...routerProps,
+          createElement: (Component, props) => (
+            <Component {...props} dataSource={dataSource} />
+          ),
+        };
 
-      markup = renderToString(<RouterContext {...renderProps} />);
-    } else {
-      markup = renderToString(<NotFoundPage />);
-      res.status(404);
-    }
+        markup = renderToString(<RouterContext {...renderProps} />);
+      } else {
+        markup = renderToString(<NotFoundPage />);
+        res.status(404);
+      }
 
-    return res.render('index', { markup, dataSource });
+      res.render('index', { markup, dataSource });
+    });
   });
 };
 
