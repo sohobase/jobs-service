@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import C from '../../shared/constants';
 
 const { DEVELOPMENT } = C.ENV;
-const { environment = DEVELOPMENT } = process.env.NODE_ENV;
+const environment = process.env.NODE_ENV || DEVELOPMENT;
 const MONGO_URL = process.env[`${environment.toUpperCase()}_MONGO_URL`];
 
 export default {
