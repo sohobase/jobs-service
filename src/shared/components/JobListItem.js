@@ -12,7 +12,7 @@ const JobListItem = (props = {}) => {
     company,
     position,
   } = props;
-  const { name, about, image } = company || {};
+  const { name: companyName, about, image } = company || {};
 
   const isNew = ProviderDate.inLast24Hours(createdAt);
   const classes = classnames(style.joblistitem, style[category]);
@@ -22,8 +22,8 @@ const JobListItem = (props = {}) => {
       <li className={classes}>
         { isNew && <abbr className={style.new}>NEW</abbr> }
         <div className={style.header}>
-          { image && <img src={image} alt={name} className={style.image} /> }
-          <span className={style.company}>{name}</span>
+          { image && <img src={image} alt={companyName} className={style.image} /> }
+          <span className={style.company}>{companyName}</span>
           { category && <Link to={`/jobs/${category}`} className={style.category}>{category}</Link> }
           <span className={style.date}>{ProviderDate.ago(createdAt)}</span>
         </div>
