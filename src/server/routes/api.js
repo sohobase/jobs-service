@@ -31,7 +31,6 @@ router.get('/jobs/:category', (req, res) => {
 
 router.get('/session', (req, res) => {
   const { session } = req;
-
   if (session.views) {
     session.views += 1;
   } else {
@@ -50,10 +49,9 @@ router.post('/offer', (req, res) => {
 router.post('/createCharge', (req, res) => {
   const formData = req.body;
   const { offer } = req.session;
-  // TODO offer is null
-  ServiceStripe(formData.token, offer).then((result) => {
-    res.json({ result: { id: result.id } });
-  });
+
+  ServiceStripe(formData.token, offer)
+    .then((value) => { res.json(value); });
 });
 
 export default router;
