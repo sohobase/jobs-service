@@ -14,19 +14,19 @@ const x = Xray({
     },
 
     id(value) {
-      return value.split('/jobs/')[1];
+      return value && value.split('/jobs/')[1];
     },
 
     location(value) {
-      return value.replace('Headquarters: ', '');
+      return value && value.replace('Headquarters: ', '');
     },
 
     createdAt(value) {
-      return Chrono.parseDate(value);
+      return value && Chrono.parseDate(value);
     },
 
     markdown(value) {
-      return toMarkdown(value);
+      return value && toMarkdown(value);
     },
   },
 });

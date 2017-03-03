@@ -8,7 +8,7 @@ const x = Xray({
   filters: {
 
     category(value) {
-      return value.toLowerCase();
+      return value && value.toLowerCase();
     },
 
     id(value) {
@@ -16,19 +16,15 @@ const x = Xray({
     },
 
     date(value) {
-      return Chrono.parseDate(value);
-    },
-
-    about(value) {
-      return value;
+      return value && Chrono.parseDate(value);
     },
 
     location(value) {
-      return value.replace(/(\t|\n|\r)/gm, '');
+      return value && value.replace(/(\t|\n|\r)/gm, '');
     },
 
     markdown(value) {
-      return toMarkdown(value);
+      return value && toMarkdown(value);
     },
   },
 });
@@ -42,7 +38,7 @@ const schema = {
     category: '.job-type | category',
     createdAt: '.date-posted date | date',
     companyUrl: '.job-company a@href',
-    companyAbout: '.job-company-about@html | about | markdown',
+    companyAbout: '.job-company-about@html | markdown',
     companyImage: '.company_logo@src',
     text: '.job-overview .section@html | markdown',
     url: '.job_manager_contact_details_inner a@href',
@@ -53,7 +49,9 @@ export default () => {
   x('https://jobspresso.co/', '.job_listings li', [schema])((error, values = []) => {
     ServiceTelegram(`⚙️ #cron #jobespresso ${error || ''}`);
 
-    values.forEach(({ id, position, company, location, page }) => {
+
+    values.forEach(({ id, position, company, location, page = {} }) => {
+
       if (id) {
         Offer.consolidate('jobspresso', id, {
           category: page.category,

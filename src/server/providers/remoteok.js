@@ -7,19 +7,19 @@ import toMarkdown from './modules/toMarkdown';
 const x = Xray({
   filters: {
     id(value) {
-      return value.split('/remote-jobs/')[1];
+      return value && value.split('/remote-jobs/')[1];
     },
 
     date(value) {
-      return Chrono.parseDate(value);
+      return value && Chrono.parseDate(value);
     },
 
     format(value) {
-      return value.replace(/(\t|\n|\r)/gm, '');
+      return value && value.replace(/(\t|\n|\r)/gm, '');
     },
 
     markdown(value) {
-      return toMarkdown(value);
+      return value && toMarkdown(value);
     },
   },
 });
