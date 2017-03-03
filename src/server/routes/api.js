@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { Offer } from '../models';
-import createCharge from '../services/createCharge';
+import { ServiceStripe } from '../services';
 
 const router = new Router();
 
@@ -56,7 +56,7 @@ router.post('/createCharge', (req, res) => {
   const formData = req.body;
   const { offer } = req.session;
   // TODO offer is null
-  createCharge(formData.token, offer).then((result) => {
+  ServiceStripe(formData.token, offer).then((result) => {
     res.json({ result: { id: result.id } });
   });
 });
