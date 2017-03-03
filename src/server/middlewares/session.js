@@ -1,10 +1,12 @@
-import session from 'express-session';
 import Express from 'express';
+import session from 'express-session';
+import C from '../../shared/constants';
 
+const { PRODUCTION } = C.ENV;
+const props = { secret: 'keyboard_cat', resave: true, saveUninitialized: true, cookie: {} };
 const app = Express();
-const props = { secret: 'keyboard cat', cookie: { maxAge: 3600000 } };
 
-if (app.get('env') === 'production') {
+if (app.get('env') === PRODUCTION) {
   app.set('trust proxy', 1);
   props.cookie.secure = true;
 }
