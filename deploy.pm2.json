@@ -7,7 +7,7 @@
       "repo" : "git@github.com:sohobase/jobs-service.git",
       "path" : "/home/www",
       "ssh_options": ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
-      "post-deploy" : "npm install -production && pm2 startOrRestart ecosystem.json --env production",
+      "post-deploy" : "npm install -production && NODE_ENV=production pm2 startOrRestart ecosystem.json",
       "env"  : {
         "NODE_ENV": "production"
       }

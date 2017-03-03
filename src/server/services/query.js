@@ -16,9 +16,10 @@ export default (req) => {
       const query = { state: 'ready' };
 
       if (category) query.category = category;
-      Offer.find(query).sort('createdAt').limit(32).then((dataSource) => {
-        resolve(dataSource);
-      });
+      Offer.find(query).sort('createdAt').populate('company').limit(32)
+        .then((dataSource) => {
+          resolve(dataSource);
+        });
     } else if (urlContext === 'offer') {
       resolve(req.session.offer);
     }

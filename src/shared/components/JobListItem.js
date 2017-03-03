@@ -10,10 +10,9 @@ const JobListItem = (props = {}) => {
     category,
     createdAt = (new Date()),
     company,
-    companyAbout,
-    companyImage,
     position,
   } = props;
+  const { name, about, image } = company || {};
 
   const isNew = ProviderDate.inLast24Hours(createdAt);
   const classes = classnames(style.joblistitem, style[category]);
@@ -23,13 +22,13 @@ const JobListItem = (props = {}) => {
       <li className={classes}>
         { isNew && <abbr className={style.new}>NEW</abbr> }
         <div className={style.header}>
-          { companyImage && <img src={companyImage} alt={company} className={style.image} /> }
-          <span className={style.company}>{company}</span>
+          { image && <img src={image} alt={name} className={style.image} /> }
+          <span className={style.company}>{name}</span>
           { category && <Link to={`/jobs/${category}`} className={style.category}>{category}</Link> }
           <span className={style.date}>{ProviderDate.ago(createdAt)}</span>
         </div>
         <strong className={style.position}>{position}</strong>
-        { companyAbout && <p className={style.about}>{companyAbout}</p> }
+        { about && <p className={style.about}>{about}</p> }
       </li>
     </Link>
   );
@@ -37,9 +36,7 @@ const JobListItem = (props = {}) => {
 
 JobListItem.propTypes = {
   category: PropTypes.string,
-  company: PropTypes.string,
-  companyAbout: PropTypes.string,
-  companyImage: PropTypes.string,
+  company: PropTypes.object,
   _id: PropTypes.string,
   position: PropTypes.string,
   createdAt: PropTypes.any,
