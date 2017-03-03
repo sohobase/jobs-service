@@ -1,9 +1,9 @@
 require('babel-register');
 require('dotenv').config();
 const hook = require('css-modules-require-hook');
-const mongo = require('./services/serviceMongo').default;
+const ServiceMongo = require('./services/mongo').default;
 
-mongo.connect()
+ServiceMongo.connect()
   .then((connection) => {
     global.db = connection;
 
