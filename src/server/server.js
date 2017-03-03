@@ -6,7 +6,7 @@ import { api, router, webhookStripe } from './routes';
 import { ServiceTelegram } from './services';
 
 const { DEVELOPMENT, PRODUCTION } = C.ENV;
-const { port = 8080, NODE_ENV = DEVELOPMENT } = process.env;
+const { port = 3000, NODE_ENV = DEVELOPMENT } = process.env;
 const app = Express();
 
 // -- Setup
