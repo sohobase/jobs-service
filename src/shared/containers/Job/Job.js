@@ -9,6 +9,10 @@ import ProviderDate from '../../providers/ProviderDate';
 import { Box, Button } from '../../components';
 import style from './Job.css';
 
+const { NODE_ENV } = process.env;
+const { PRODUCTION } = C.ENV;
+
+
 export default class Job extends Component {
 
   static propTypes = {
@@ -74,7 +78,7 @@ export default class Job extends Component {
     } = this.state.dataSource;
     const { name, url, image } = company;
     const { location: route } = this.props;
-    const stripePublicKey = process.env.NODE_ENV === C.environment.production
+    const stripePublicKey = NODE_ENV === PRODUCTION
       ? C.stripe.live_publishable_key
       : C.stripe.test_publishable_key;
 

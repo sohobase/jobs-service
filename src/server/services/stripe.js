@@ -4,7 +4,7 @@ import C from '../../shared/constants';
 import { ServiceTelegram } from './';
 
 const { NODE_ENV, STRIPE_SECRET_KEY } = process.env;
-const { production } = C.environment;
+const { PRODUCTION } = C.ENV;
 
 export default (token, offer) => (
   new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ export default (token, offer) => (
       if (error) return reject(error);
 
       if (charge.status === 'succeeded') {
-        if (NODE_ENV === production) ServiceTelegram('New charge +200$. 💸💸💸💸💸💸');
+        if (NODE_ENV === PRODUCTION) ServiceTelegram('New charge +200$. 💸💸💸💸💸💸');
         // @TODO: Insert Offer from session
       }
       return resolve({});

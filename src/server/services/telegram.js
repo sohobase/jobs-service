@@ -2,11 +2,11 @@ import TeleBot from 'telebot';
 import C from '../../shared/constants';
 
 const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, NODE_ENV } = process.env;
-const isProduction = NODE_ENV === C.environment.production;
+const { PRODUCTION } = C.ENV;
 let bot;
 
 export default (message) => {
-  if (isProduction) {
+  if (NODE_ENV === PRODUCTION) {
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
     if (!bot) {
       bot = new TeleBot(TELEGRAM_BOT_TOKEN);

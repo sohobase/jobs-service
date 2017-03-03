@@ -1,5 +1,5 @@
 export default {
-  environment: { development: 'development', production: 'production' },
+  ENV: { DEVELOPMENT: 'development', PRODUCTION: 'production' },
 
   offer: {
     state: {
